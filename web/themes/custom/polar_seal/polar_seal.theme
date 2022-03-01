@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * DXPR Theme sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+
+/**
+ * Implements hook_preprocess_page().
+ */
+// phpcs:disable
+function polar_seal_preprocess_page(&$variables) {
+  $dxpr_theme_libraries = [
+    // Bootstrap TAILORING.
+    'polar_seal/bootstrap-3',
+    'polar_seal/bootstrap-theme',
+    'polar_seal/jquery-ui',
+    // DXPR THEME BASE.
+    'polar_seal/footer-menu',
+    'polar_seal/forms',
+    'polar_seal/layout',
+    'polar_seal/page-title',
+    'polar_seal/typography',
+    // DXPR THEME Components.
+    'polar_seal/dxpr-theme-full-screen-search',
+    'polar_seal/dxpr-theme-header',
+    'polar_seal/dxpr-theme-header--top',
+    'polar_seal/dxpr-theme-header--side',
+    'polar_seal/dxpr-theme-header--mobile',
+    'polar_seal/dxpr-theme-secondary-header',
+    'polar_seal/pager-prevnext',
+    'polar_seal/dxpr-theme-admin',
+    // Overrides.
+    'polar_seal/cubeportfolio',
+    'polar_seal/drupal-breadcrumbs',
+    'polar_seal/drupal-comments',
+    'polar_seal/drupal-pager',
+    'polar_seal/drupal-webform',
+    'polar_seal/cms-bootstrap-core',
+    'polar_seal/cms-bootstrap-blog',
+    'polar_seal/cms-bootstrap-events',
+    'polar_seal/cms-bootstrap-news',
+    'polar_seal/cms-bootstrap-portfolio',
+    'polar_seal/sooperthemes-premium-elements',
+    'polar_seal/dxpr-theme-builder',
+    // HELPERS.
+    'polar_seal/helper-classes',
+  ];
+  foreach ($dxpr_theme_libraries as $dxpr_theme_library) {
+    $variables['#attached']['library'][] = $dxpr_theme_library;
+  }
+}
+// phpcs:enable

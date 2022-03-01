@@ -1,0 +1,80 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the premium modules and themes status report.
+ *
+ * @see template_preprocess_update_premium_report()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<p>
+  {% if last_checked %}
+    {{ 'Last checked: @time ago'|t({'@time': time}) }}
+  {% else %}
+    {{ 'Last checked: never'|t }}
+  {% endif %}
+  ({{ link }})
+</p>
+
+{% if projects %}
+  {% for type, items in projects %}
+    <h3>{{ type|capitalize|t }}</h3>
+    <table class="update">
+      <tbody>
+        {% for project in items %}
+         <tr class="color-{% if project.status %}{{ project.status }}{% else %}success{% endif %} odd">
+            <td>
+               <div class="project-update__status project-update__status--current">
+               
+               {% if project.status == 'warning' %}
+                  <span>{{ 'Update available'|t }}</span>  <span class="project-update__status-icon">{{ project.status_icon }}</span>
+               {% elseif project.status == 'error' %}
+                  <span>{{ 'Security update available'|t }}</span>  <span class="project-update__status-icon">{{ project.status_icon }}</span>
+               {% else %}
+                  <span>{{ 'Up to date'|t }}</span>  <span class="project-update__status-icon">{{ project.status_icon }}</span>
+               {% endif %}
+
+               </div>
+               <div class="project-update__title"><a href="{{ project.project_url }}" target="_blank">{{ project.name }}</a>  {{ project.version }}
+                 {% if project.update_premium.authors %}<span style="font-weight: normal"> {{ 'by'|t }} 
+                   {% for name, email in project.update_premium.authors %}
+                     {% if email %}<a href="{{ email }}" target="_blank">{{ name }}</a>{% else %}{{ name }} {% endif %}
+                   {% endfor %}</span>
+                 {% endif %}
+               </div>
+               <div class="project-updates__details">
+
+                  {% if project.update_available.project_url and project.status != "success" %}
+                   <div class="project-update__version-details layout-column">
+                      {{ 'There is a new version available.'|t }} <a href="{{ project.update_available.download_url }}" target="_blank">{{ project.update_available.version }}</a> ({{ project.update_available.timestamp|date('Y-M-d') }}).{% if project.update_available.tested_up_to %} {{ 'Works with Drupal @core and tested up to @version. '|t({'@core': project.update_available.core, '@version': project.update_available.tested_up_to }) }} {% endif %}
+                   </div>
+                  {% endif %}
+
+                  {% if project.update_available.code == "INVALID_LICENSE" %}
+                     <div><span style="color: #a51b00;font-weight:bold;">{{ project.update_available.message }}</span></div>
+                  {% endif %}
+
+                  {% if project.update_available.project_url and project.status != "success" %}
+                   <br />
+                   {% if not project.core_compatible and project.update_available.core %}<div><span style="color: #a51b00;font-weight:bold;">{{ 'WARNING: Not compatible with @core. Drupal @version required.'|t({'@core': current_core_version, '@version': project.update_available.core}) }}</span></div>{% endif %}
+                   <div>
+                     {% if project.update_available.project_url %}<a href="{{ project.update_available.download_url }}" target="_blank"><strong>{{ 'Download'|t }}</strong></a>{% endif %}
+                     {% if project.update_available.release_details_url %} | <a href="{{ project.update_available.release_details_url }}" target="_blank">{{ 'Release notes'|t }}</a>{% endif %}
+                   </div>
+                   {% if project.update_available.description %}<p><em>{{ project.update_available.description }}</em></p>{% endif %}
+                 {% else %}
+                   {% if project.description %}<p><em>{{ project.description }}</em></p>{% endif %}
+                 {% endif %}
+
+               </div>
+            </td>
+         </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endfor %}
+{% else %}
+  <p>{{ empty }}</p>
+{% endif %}

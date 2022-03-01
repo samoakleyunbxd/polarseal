@@ -1,0 +1,17 @@
+update_premium.status:
+  path: '/admin/reports/updates/premium'
+  defaults:
+    _controller: '\Drupal\update_premium\Controller\UpdateController::updateStatus'
+    _title: 'Premium updates'
+  requirements:
+    _permission: 'administer site configuration'
+    _access_update_manager: 'TRUE'
+
+update_premium.manual_status:
+  path: '/admin/reports/updates/premium/check'
+  defaults:
+    _title: 'Manual update check'
+    _controller: '\Drupal\update_premium\Controller\UpdateController::updateStatusManually'
+  requirements:
+    _permission: 'administer site configuration'
+    _csrf_token: 'TRUE'

@@ -1,0 +1,10 @@
+external_media_premium.core:
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/drupalSettings
+  js:
+    js/core.min.js: {}
+  css: 
+    theme:
+      css/core.css: {}

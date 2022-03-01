@@ -1,0 +1,5 @@
+# Schema for the theme setting configuration file of the Polar Seal theme.
+
+polar_seal.settings:
+  type: theme_settings
+  label: 'Polar Seal settings'

@@ -1,0 +1,16 @@
+{
+  "name": "External Media Premium",
+  "type": "drupal-module",
+  "description": "Premium version of External Media module. Import media from Unsplash, Instagram, Pexels, Pixabay and AWS.",
+  "authors": [
+    {
+      "name": "Minnur Yunusov",
+      "homepage": "https://www.minnur.com",
+      "role": "Maintainer"
+    }
+  ],
+  "require": {
+    "drupal/core": "^8.8.0 || ^9.0",
+    "drupal/external_media": "^1.0"
+  }
+}

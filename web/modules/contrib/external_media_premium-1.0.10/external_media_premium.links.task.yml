@@ -1,0 +1,14 @@
+external_media_premium.widgets:
+  title: 'Widgets'
+  route_name: external_media.settings
+  weight: 100
+
+external_media_premium.license:
+  title: 'Widgets'
+  route_name: external_media.settings
+  base_route: external_media_premium.widgets
+
+external_media_premium.licens2e:
+  title: 'License'
+  route_name: external_media_premium.license
+  base_route: external_media_premium.widgets

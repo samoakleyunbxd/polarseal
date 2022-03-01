@@ -1,0 +1,17 @@
+.external-media-premium-msg {
+  padding: 20px;
+  background: #d5f3ff;
+  border-radius: 4px;
+}
+
+.external-media-info-msg {
+  padding: 20px;
+  background: #f8fafb;
+  border-radius: 4px;
+}
+
+.em-plugin-description {
+  padding: 20px;
+  background: #ececec;
+  border-radius: 4px;
+}

@@ -1,0 +1,7 @@
+external_media_premium.license:
+  path: '/admin/config/media/external-media/liense'
+  defaults:
+    _title: 'External Media Premium License'
+    _form: '\Drupal\external_media_premium\Form\LicenseForm'
+  requirements:
+    _permission: 'administer site configuration'

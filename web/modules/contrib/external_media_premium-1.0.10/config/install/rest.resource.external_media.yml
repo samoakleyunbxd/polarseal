@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - external_media
+    - serialization
+    - user
+id: external_media
+plugin_id: external_media
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

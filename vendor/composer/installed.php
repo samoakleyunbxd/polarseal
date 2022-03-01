@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '140959f5fcfd7da5a2fe377a0e59a4ad7fd2c9d2',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -26,6 +26,15 @@
             'install_path' => __DIR__ . '/../asm89/stack-cors',
             'aliases' => array(),
             'reference' => 'b9c31def6a83f84b4d4a40d35996d375755f0e08',
+            'dev_requirement' => false,
+        ),
+        'bynder/bynder-php-sdk' => array(
+            'pretty_version' => '2.1.5',
+            'version' => '2.1.5.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../bynder/bynder-php-sdk',
+            'aliases' => array(),
+            'reference' => 'b45d78b02e7a4e69ee66ee67e9761ae5e0bc525b',
             'dev_requirement' => false,
         ),
         'chi-teck/drupal-code-generator' => array(
@@ -243,6 +252,15 @@
             'replaced' => array(
                 0 => '9.3.5',
             ),
+        ),
+        'drupal/backup_migrate' => array(
+            'pretty_version' => '5.0.1',
+            'version' => '5.0.1.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/backup_migrate',
+            'aliases' => array(),
+            'reference' => '5.0.1',
+            'dev_requirement' => false,
         ),
         'drupal/ban' => array(
             'dev_requirement' => false,
@@ -676,6 +694,24 @@
             'reference' => '8.x-1.9',
             'dev_requirement' => false,
         ),
+        'drupal/external_media' => array(
+            'pretty_version' => '1.0.19',
+            'version' => '1.0.19.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/external_media',
+            'aliases' => array(),
+            'reference' => '1.0.19',
+            'dev_requirement' => false,
+        ),
+        'drupal/feeds' => array(
+            'pretty_version' => '3.0.0-alpha11',
+            'version' => '3.0.0.0-alpha11',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/feeds',
+            'aliases' => array(),
+            'reference' => '8.x-3.0-alpha11',
+            'dev_requirement' => false,
+        ),
         'drupal/field' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -923,12 +959,12 @@
             ),
         ),
         'drupal/recommended-project' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '140959f5fcfd7da5a2fe377a0e59a4ad7fd2c9d2',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(
@@ -1101,6 +1137,15 @@
                 0 => '9.3.5',
             ),
         ),
+        'drupal/update_premium' => array(
+            'pretty_version' => '1.7.0',
+            'version' => '1.7.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/update_premium',
+            'aliases' => array(),
+            'reference' => '8.x-1.7',
+            'dev_requirement' => false,
+        ),
         'drupal/user' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -1158,6 +1203,15 @@
             'reference' => 'dc5bce653fa4d9c792e9dcffa728c0642847c1e1',
             'dev_requirement' => false,
         ),
+        'espresso-dev/instagram-basic-display-php' => array(
+            'pretty_version' => 'v1.1.6',
+            'version' => '1.1.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../espresso-dev/instagram-basic-display-php',
+            'aliases' => array(),
+            'reference' => 'e15ac322fd5ee3b8469bcb3e16c90667b8f2e208',
+            'dev_requirement' => false,
+        ),
         'grasmash/expander' => array(
             'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
@@ -1192,6 +1246,15 @@
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
             'aliases' => array(),
             'reference' => '1afdd860a2566ed3c2b0b4a3de6e23434a79ec85',
+            'dev_requirement' => false,
+        ),
+        'hughbertd/oauth2-unsplash' => array(
+            'pretty_version' => '1.0.3',
+            'version' => '1.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../hughbertd/oauth2-unsplash',
+            'aliases' => array(),
+            'reference' => 'f451f4a49dca4027f6edaa850d2fccdfa8721bfe',
             'dev_requirement' => false,
         ),
         'laminas/laminas-diactoros' => array(
@@ -1239,6 +1302,15 @@
             'reference' => '84ecbc2dbecc31bd23faf759a0e329ee49abddbd',
             'dev_requirement' => false,
         ),
+        'league/oauth2-client' => array(
+            'pretty_version' => '2.6.1',
+            'version' => '2.6.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../league/oauth2-client',
+            'aliases' => array(),
+            'reference' => '2334c249907190c132364f5dae0287ab8666aa19',
+            'dev_requirement' => false,
+        ),
         'masterminds/html5' => array(
             'pretty_version' => '2.7.5',
             'version' => '2.7.5.0',
@@ -1262,6 +1334,15 @@
             'replaced' => array(
                 0 => '~2.0',
             ),
+        ),
+        'paragonie/random_compat' => array(
+            'pretty_version' => 'v9.99.100',
+            'version' => '9.99.100.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../paragonie/random_compat',
+            'aliases' => array(),
+            'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+            'dev_requirement' => false,
         ),
         'pear/archive_tar' => array(
             'pretty_version' => '1.4.14',
@@ -1807,6 +1888,15 @@
             'reference' => '5cc2f04a4e2f5c7e9cc02a3bdf80fae0f3e11a8c',
             'dev_requirement' => false,
         ),
+        'unsplash/unsplash' => array(
+            'pretty_version' => '2.5.1',
+            'version' => '2.5.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../unsplash/unsplash',
+            'aliases' => array(),
+            'reference' => '998cc023b8f8c6e68f45b750e61a6e21ae15ff02',
+            'dev_requirement' => false,
+        ),
         'webflo/drupal-finder' => array(
             'pretty_version' => '1.2.2',
             'version' => '1.2.2.0',
@@ -1841,6 +1931,15 @@
             'install_path' => __DIR__ . '/../webonyx/graphql-php',
             'aliases' => array(),
             'reference' => 'ffa431c0821821839370a68dab3c2597c06bf7f0',
+            'dev_requirement' => false,
+        ),
+        'zoonman/pixabay-php-api' => array(
+            'pretty_version' => '1.0.3',
+            'version' => '1.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../zoonman/pixabay-php-api',
+            'aliases' => array(),
+            'reference' => '8dea263e100eee1a1a091438158bad21c19ae286',
             'dev_requirement' => false,
         ),
     ),

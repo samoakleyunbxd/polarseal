@@ -1,0 +1,165 @@
+{#
+/**
+ * @file
+ * External Media popup widget.
+ */
+#}
+<div id="emw-loader">
+  <div class="loader-wrapper"><img src="{{ loader_url }}" /></div>
+</div>
+<div class="external-media-widget-popup">
+  <div id="files"></div>
+
+  {% if plugin_id == 'unsplash_picker' %}
+    <div class="filter-toolbar">
+      <form class="unsplash-form">
+        <div class="form-item"><input type="text" name="query" placeholder="{{ 'Keyword'|t }}" class="query text-full form-text"></div>
+        <div class="form-item hidden"><input type="text" name="page" id="current_page" size="3" value="1" class="text-full form-text"></div>
+        <div class="form-item">
+          <select name="orientation" class="orientation filter-list form-select">
+            <option value="landscape">{{ 'landscape'|t }}</option>
+            <option value="portrait">{{ 'portrait'|t }}</option>
+            <option value="squarish">{{ 'squarish'|t }}</option>
+          </select>
+        </div>
+        <div class="form-item"><input type="submit" value="Search" class="button form-submit"></div>
+        <div class="form-item">
+          <div id="fetched-items-pager">
+            <input type="button" value="&#8592;" class="button prev-fetched-items">
+            <input type="button" value="&#8594;" class="button next-fetched-items">
+          </div>
+        </div>
+      </form>
+    </div>
+  {% elseif plugin_id == 'pixabay_picker' %}
+    <div class="filter-toolbar">
+      <form class="pixabay-form">
+        <div class="form-item"><input type="text" name="query" placeholder="{{ 'Keyword'|t }}" class="query text-full form-text"></div>
+        <div class="form-item hidden"><input type="text" name="page" id="current_page" size="3" value="1" class="text-full form-text"></div>
+        <div class="form-item hidden">
+          <select name="type" class="type filter-list form-select">
+            <option value="image">{{ 'images'|t }}</option>
+            <option value="video">{{ 'videos'|t }}</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <select name="image_type" class="image_type filter-list form-select">
+            <option value="all">{{ 'all'|t }}</option>
+            <option value="photo">{{ 'photo'|t }}</option>
+            <option value="illustration">{{ 'illustration'|t }}</option>
+            <option value="vector">{{ 'vector'|t }}</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <select name="orientation" class="orientation filter-list form-select">
+            <option value="all">{{ 'all'|t }}</option>
+            <option value="horizontal">{{ 'horizontal'|t }}</option>
+            <option value="vertical">{{ 'vertical'|t }}</option>
+          </select>
+        </div>
+        <div class="form-item"><input type="submit" value="Search" class="button form-submit"></div>
+        <div class="form-item">
+          <div id="fetched-items-pager">
+            <input type="button" value="&#8592;" class="button prev-fetched-items">
+            <input type="button" value="&#8594;" class="button next-fetched-items">
+          </div>
+        </div>
+      </form>
+    </div>
+  {% elseif plugin_id == 'pexels_picker' %}
+    <div class="filter-toolbar">
+      <form class="pexels-form">
+        <div class="form-item"><input type="text" name="query" placeholder="{{ 'Keyword'|t }}" class="query text-full form-text"></div>
+        <div class="form-item hidden"><input type="text" name="page" id="current_page" size="3" value="1" class="text-full form-text"></div>
+        <div class="form-item hidden">
+          <select name="type" class="type filter-list form-select">
+            <option value="image">{{ 'images'|t }}</option>
+            <option value="video">{{ 'videos'|t }}</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <select name="image-list-type" class="image-list-type filter-list form-select">
+            <option value="search">{{ 'search'|t }}</option>
+            <option value="curated">{{ 'curated'|t }}</option>
+          </select>
+        </div>
+        <div class="form-item"><input type="submit" value="Search" class="button form-submit"></div>
+        <div class="form-item">
+          <div id="fetched-items-pager">
+            <input type="button" value="&#8592;" class="button prev-fetched-items">
+            <input type="button" value="&#8594;" class="button next-fetched-items">
+          </div>
+        </div>
+      </form>
+    </div>
+  {% elseif plugin_id == 'scraper_picker' %}
+    <div class="filter-toolbar">
+      <form class="scraper-form">
+        <div class="form-item"><input type="text" name="remote_url" placeholder="{{ 'URL to scan'|t }}" size="65" class="remote_url text-full form-text"></div>
+        <div class="form-item"><input type="submit" value="Scan URL" class="button form-submit"></div>
+      </form>
+    </div>
+  {% elseif plugin_id == 'aws_picker' %}
+    <div class="filter-toolbar">
+      <div id="aws-breadcrumbs"></div>
+    </div>
+  {% elseif plugin_id == 'anyurl_picker' %}
+
+  {% endif %}
+
+  <div class="fetched-items flex-container">
+    {% if plugin_id in ['unsplash_picker', 'pixabay_picker', 'pexels_picker'] %}
+      <div class="no-items-text"><span>{{ 'Use search to find pictures'|t }}</span></div>
+    {% elseif plugin_id == 'scraper_picker' %}
+      <div class="no-items-text"><span>{{ 'Provide URL to scan images'|t }}</span></div>
+    {% elseif plugin_id == 'anyurl_picker' %}
+
+      <form class="url-import-form-elements">
+      <div class="anyurl-wrapper">
+        <div class="url-multiselect">
+          <div class="form-item form-type-textarea">
+            <label for="urls-text">{{ 'URLs'|t }}</label>
+            <div class="form-textarea-wrapper">
+              <textarea class="text-full form-textarea resize-vertical" data-drupal-selector="url-text" aria-describedby="url-text" id="url-text" name="url-text" rows="4" cols="60" placeholder="" data-url-type="many"></textarea>
+            </div>
+            <div id="urls-text--description" class="description">
+              {{ 'Import multiple URLs. One URL per line.'|t }}
+            </div>
+          </div>
+        </div>
+        <div class="url-single">
+          <div class="form-item form-type-textarea">
+            <label for="urls-text">{{ 'URL'|t }}</label>
+            <div class="form-textarea-wrapper">
+              <input class="text-full form-text" data-drupal-selector="url-text" type="text" id="url-text" name="url-text" value="" size="60" maxlength="255" placeholder="" required="required" aria-required="true" data-url-type="one">
+            </div>
+            <div id="urls-text--description" class="description">
+              {{ 'Import file from remote URL.'|t }}
+            </div>
+          </div>
+        </div>
+      </div>
+      </form>
+
+    {% else %}
+      <div class="no-items-text"><span>{{ 'There are no items'|t }}</span></div>
+    {% endif %}
+  </div>
+  <div class="toolbar">
+    <div class="container">
+      {% if service_icon %}
+        <div class="plugin-icon"><a href="{{ service_url }}" target="_blank"><img src="{{ service_icon }}" border="0" /></a></div>
+      {% endif %}
+      {% if profile_name %}
+        {% if plugin_id == 'aws_picker' %}
+          <div class="profile{% if service_icon %} with-icon{% endif %}">{{ profile_name|raw }}</div>
+        {% else %}
+          <div class="profile{% if service_icon %} with-icon{% endif %}">{{ 'Logged in as %name'|t({'%name' : profile_name}) }}</div>
+        {% endif %}
+      {% endif %}
+      <a href="#" id="deselect">{{ 'Deselect all'|t }}</a>
+      <a href="#" id="cancel">{{ 'Cancel'|t }}</a>
+      <a href="#" id="pick"><span class="pick-label">{{ 'Choose'|t }}</span></a>
+    </div>
+  </div>
+</div>

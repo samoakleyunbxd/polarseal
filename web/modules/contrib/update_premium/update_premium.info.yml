@@ -1,0 +1,11 @@
+name: 'Premium Updates'
+type: module
+description: 'Display available updates for premium modules and themes.'
+dependencies:
+  - drupal:update
+core_version_requirement: ^8.8.0 || ^9.0
+
+# Information added by Drupal.org packaging script on 2020-08-17
+version: '8.x-1.7'
+project: 'update_premium'
+datestamp: 1597652013

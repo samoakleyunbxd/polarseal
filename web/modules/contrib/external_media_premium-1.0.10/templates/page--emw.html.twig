@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * External Media Widget redirect page template.
+ *
+ * @see template_preprocess_page()
+ * @see page-emw.html.twig
+ */
+#}
+<div id="page-wrapper">
+  {% for block in page.content %}
+  {# Show only main content block on the external media popup pages #}
+    {% if block['#plugin_id'] == 'system_main_block' %}
+      {{ block }}
+    {% endif %}
+  {% endfor %}
+</div>

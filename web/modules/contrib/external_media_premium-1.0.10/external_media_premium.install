@@ -1,0 +1,45 @@
+<?php
+
+use Drupal\user\Entity\Role;
+
+/**
+ * Implements hook_requirements().
+ */
+function external_media_premium_requirements($phase) {
+  $requirements = [];
+  $extension = \Drupal::service('extension.list.module')->getExtensionInfo('external_media');
+  $version = !empty($extension['version']) ? str_replace('.', '', $extension['version']) : NULL;
+  if ($phase == 'runtime' || $phase == 'install') {
+    if ($version < 103) {
+      $requirements['external_media_premium'] = [
+        'title' => t('External Media'),
+        'value' => t('External Media Premium requires at least version 1.0.3. The version you are running is @version', ['@version' => $extension['version']]),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+  }
+  return $requirements;
+}
+
+/**
+ * Implements hook_install().
+ */
+function external_media_premium_install() {
+  // Setting appropirate permission to the rest resource.
+  $role = Role::load('authenticated');
+  $role->grantPermission('restful get external_media');
+  $role->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function external_media_premium_uninstall() {
+  // Delete premium plugin settings.
+  $to_delete = ['anyurl_picker', 'aws_picker', 'instagram_picker', 'pexels_picker', 'pixabay_picker', 'unsplash_picker'];
+  $plugins = \Drupal::state()->get('external_media.info', []);
+  foreach ($to_delete as $plugin) {
+    unset($plugins[$plugin]);
+  }
+  \Drupal::state()->set('external_media.info', $plugins);
+}

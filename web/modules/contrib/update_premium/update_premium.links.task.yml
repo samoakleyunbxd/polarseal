@@ -1,0 +1,10 @@
+update_premium.status:
+  route_name: update_premium.status
+  base_route: system.admin_reports
+  title: 'Premium updates'
+  weight: 1
+
+update_premium.list:
+  title: 'List'
+  route_name: update_premium.status
+  parent_id: update_premium.status

@@ -1,0 +1,170 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\external_media_premium\Form\ExternalMediaFileUploadForm;
+use Drupal\external_media_premium\Form\LicenseForm;
+
+/**
+ * Implements hook_theme().
+ */
+function external_media_premium_theme() {
+  return [
+    'external_media_popup' => [
+      'variables' => ['items' => [], 'plugin_id' => NULL, 'profile_name' => NULL, 'data' => []]
+    ],
+    'page__emw' => [
+      'template' => 'page--emw',
+      'base hook' => 'page',
+    ],
+    'html__emw' => [
+      'template' => 'html--emw',
+      'base hook' => 'system',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_preprocess_page_title().
+ */
+function external_media_premium_preprocess_page_title(&$variables) {
+  if ($external_media = \Drupal::request()->attributes->get('external_media')) {
+    unset($variables['title']);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function external_media_premium_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($external_media = \Drupal::request()->attributes->get('external_media')) {
+    $suggestions[] = 'page__emw';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_html_alter().
+ */
+function external_media_premium_theme_suggestions_html_alter(array &$suggestions, array $variables) {
+  if ($external_media = \Drupal::request()->attributes->get('external_media')) {
+    $suggestions[] = 'html__emw';
+  }
+}
+
+/**
+ * Preprocess function for the external-media-popup.html.twig template.
+ */
+function external_media_premium_preprocess_external_media_popup(&$variables) {
+  $external_media = \Drupal::service('plugin.manager.external_media')->createInstance($variables['plugin_id']);
+  $module_handler = \Drupal::service('module_handler');
+  $module_path = $module_handler->getModule('external_media_premium')->getPath();
+  $variables['loader_url'] = base_path() . $module_path . '/img/preloader.svg';
+  if ($icon = $external_media->getIcon()) {
+    $variables['service_icon'] = $icon;
+    $variables['service_url'] = $external_media->getWebsite();
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function external_media_premium_theme_suggestions_external_media_popup(array $variables) {
+  $suggestions = [];
+  if (!empty($variables['plugin_id'])) {
+    $plugin_id = preg_replace('/[^a-z0-9_]+/', '_', mb_strtolower($variables['plugin_id']));
+    $suggestions[] = 'external_media_popup__' . $plugin_id;
+  }
+  return $suggestions;
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function external_media_premium_preprocess_html(&$variables) {
+  if ($external_media = \Drupal::request()->attributes->get('external_media')) {
+    $variables['attributes']['class'][] = 'emw-page-container';
+    $variables['attributes']['class'][] = 'emw-' . $external_media->getPluginId();
+  }
+}
+
+/**
+ * Implements hook_library_info_build().
+ */
+function external_media_premium_library_info_build() {
+  if (!\Drupal::moduleHandler()->moduleExists('external_media')) {
+    return;
+  }
+  $libraries = [];
+  $external_media = \Drupal::service('plugin.manager.external_media');
+  foreach ($external_media->getDefinitions() as $plugin) {
+    $plugin = $external_media->createInstance($plugin['id']);
+    if ($plugin->classExists() && $plugin->getModule() == 'external_media_premium') {
+      $libraries[$plugin->getModule() . '.' . $plugin->getPluginId()] = $plugin->getLibraries();
+    }
+  }
+  return $libraries;
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function external_media_premium_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'media_source_info_alter') {
+    // Move this module's implementation of hook_media_source_info_alter to the end of the list.
+    $info = $implementations['external_media_premium'];
+    unset($implementations['external_media_premium']);
+    $implementations['external_media_premium'] = $info;
+  }
+}
+
+/**
+ * Implements hook_media_source_info_alter().
+ */
+function external_media_premium_media_source_info_alter(array &$sources) {
+  $sources['audio_file']['forms']['media_library_add'] = ExternalMediaFileUploadForm::class;
+  $sources['file']['forms']['media_library_add'] = ExternalMediaFileUploadForm::class;
+  $sources['image']['forms']['media_library_add'] = ExternalMediaFileUploadForm::class;
+  $sources['video_file']['forms']['media_library_add'] = ExternalMediaFileUploadForm::class;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function external_media_premium_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'external_media_settings') {
+    if (!\Drupal::moduleHandler()->moduleExists('update_premium')) {
+      $form['premium'] = [
+        '#type' => 'inline_template',
+        '#template' => '<div class="external-media-premium-msg"><strong>In order to be able to pull available updates for premium modules please install <em>Premium Updates</em> module and <a href="{{ license_url }}" class="use-ajax"  data-dialog-type="modal" data-dialog-options="{&quot;width&quot;:&quot;525&quot;}" data-drupal-link-system-path="{{ license_url|trim(\'/\', \'left\') }}">provide license</a> information. <a href="https://www.drupal.org/project/update_premium" class="button button--primary" target="_blank">Download Premium Updates</a></strong></div>',
+        '#context' => [
+          'license_url' => Url::fromRoute('external_media_premium.license')->toString(),
+        ],
+        '#attached' => [
+          'library' => [
+            'external_media/external_media.form',
+          ],
+        ],
+        '#weight' => -200,
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_update_premium().
+ */
+function external_media_premium_update_premium() {
+  $config = \Drupal::config(LicenseForm::CONFIG_NAME);
+  return [
+    [
+      'name' => 'external_media_premium',
+      'category' => 'modules',
+      'project_url' => 'https://downloads.minnur.com/drupal/external-media-premium',
+      'update_server' => 'https://downloads.minnur.com/update/drupal/external_media_premium',
+      'parameters' => [
+        'e' => $config->get('license_email'),
+        'l' => $config->get('license_number'),
+      ],
+    ],
+  ];
+}

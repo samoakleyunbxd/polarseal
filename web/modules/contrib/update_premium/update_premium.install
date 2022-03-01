@@ -1,0 +1,46 @@
+<?php
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_uninstall().
+ */
+function update_premium_uninstall() {
+  \Drupal::state()->delete('update_premium.last_check');
+  \Drupal::state()->delete('update_premium.projects_hash');
+  \Drupal::state()->delete('update_premium.license_email');
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function update_premium_requirements($phase) {
+  $requirements = [];
+  if ($phase === 'runtime') {
+  	$projects = \Drupal::service('update_premium.manager')->checkUpdates();
+    if (!empty($projects)) {
+      $update_available = FALSE;
+      foreach ($projects as $type => $project) {
+        foreach ($project as $info) {
+          if (!empty($info['update_available'])) {
+            if ($info['version'] != $info['update_available']['version']) {
+              $update_available = TRUE;
+              continue;
+            }
+          }
+        }
+      }
+      if ($update_available) {
+        $requirements['update_premium_warning'] = [
+          'title' => t('Premium Updates'),
+          'value' => 'New updates available',
+          'description' => t('New premium module updates available. See <a href=":url">list of updates</a>.', [
+            ':url' => Url::fromRoute('update_premium.status')->toString(),
+          ]),
+          'severity' => REQUIREMENT_WARNING,
+        ];
+      }
+    }
+  }
+  return $requirements;
+}

@@ -1,0 +1,18 @@
+{
+  "name": "drupal/update_premium",
+  "description": "Display available updates for premium modules and themes.",
+  "type": "drupal-module",
+  "homepage": "http://drupal.org/project/update_premium",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Minnur Yunusov (minnur)",
+      "homepage": "https://www.drupal.org/u/minnur",
+      "role": "Maintainer"
+    }   
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/update_premium",
+    "source": "http://cgit.drupalcode.org/update_premium"
+  }
+}

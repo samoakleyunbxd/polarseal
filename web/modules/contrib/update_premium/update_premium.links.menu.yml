@@ -1,0 +1,6 @@
+update_premium.status:
+  title: 'Premium updates'
+  description: 'Get a status report about available updates for your premium modules and themes.'
+  route_name: update_premium.status
+  parent: system.admin_reports
+  weight: -50

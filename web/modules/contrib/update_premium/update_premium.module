@@ -1,0 +1,39 @@
+<?php
+
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+
+/**
+ * Implements hook_theme().
+ */
+function update_premium_theme() {
+  return [
+    'update_premium_report' => [
+      'variables' => ['projects' => NULL],
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for project status report templates.
+ *
+ * Default template: update-premium-report.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - projects: An array of data about each project's status.
+ */
+function template_preprocess_update_premium_report(&$variables) {
+  $variables['last_checked'] = \Drupal::state()->get('update_premium.last_check') ?: 0;
+  $variables['time'] = \Drupal::service('date.formatter')->formatTimeDiffSince($variables['last_checked']);
+  $variables['link'] = Link::fromTextAndUrl(t('Check manually'), new Url('update_premium.manual_status', [], ['query' => \Drupal::destination()->getAsArray()]));
+  $variables['current_core_version'] = \Drupal::VERSION;
+  $variables['empty'] = t('There are no premium modules that have update manager integration.');
+}
+
+/**
+ * Implements hook_cron().
+ */
+function update_premium_cron() {
+  \Drupal::service('update_premium.manager')->checkUpdates();
+}

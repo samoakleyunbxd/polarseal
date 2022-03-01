@@ -1,0 +1,4 @@
+services:
+  update_premium.manager:
+    class: Drupal\update_premium\UpdateManager
+    arguments: ['@config.factory', '@cache.discovery', '@http_client', '@module_handler', '@theme_handler', '@state', '@renderer']
