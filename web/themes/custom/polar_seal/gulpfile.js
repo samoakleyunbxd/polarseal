@@ -16,13 +16,15 @@ var gulp = require('gulp'),
 // });
 
 
-gulp.task('sass', function () {
-  gulp.src('./sass/**/*.scss')
+gulp.task('sass', function (done) {
+	gulp.src('./sass/**/*.scss')
     .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(autoprefixer('last 2 version'))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./css'));
+
+	done()
 });
 
 function isFixed(file) {
@@ -30,7 +32,7 @@ function isFixed(file) {
 	return file.eslint != null && file.eslint.fixed;
 }
 
-gulp.task('eslint', function(){
+gulp.task('eslint', function(done){
 	gulp.src(['./js/*.js'])
 		.pipe(eslint({
 			
@@ -134,14 +136,15 @@ gulp.task('eslint', function(){
 	.pipe(eslint.format())
 	// if fixed, write the file to dest
 	.pipe(gulpIf(isFixed, gulp.dest('./js/')));;
+	done()
 });
 
 gulp.task('watch', function(){
     livereload.listen();
 
-    gulp.watch('./sass/**/*.scss', gulp.series('sass'));
+    gulp.watch('./sass/**/*.scss', gulp.series('sass','watch'));
     gulp.watch('./js/**/*.js', gulp.series('eslint'));
     gulp.watch(['./css/style.css', './**/*.html.twig', './js/*.js'], function (files){
         livereload.changed(files)
-    });
+    }); 
 });

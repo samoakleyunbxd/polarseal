@@ -31,7 +31,8 @@ class SlickParagraphsFormatter extends SlickMediaFormatter {
     $views_ui    = $this->getFieldSetting('handler') == 'default';
     $bundles     = $views_ui ? [] : $this->getFieldSetting('handler_settings')['target_bundles'];
     $media       = $admin->getFieldOptions($bundles, ['entity_reference'], $target_type, 'media');
-    $stages      = $admin->getFieldOptions($bundles, ['image', 'entity_reference'], $target_type);
+    $stages      = ['image', 'entity_reference'];
+    $stages      = $admin->getFieldOptions($bundles, $stages, $target_type);
 
     return [
       'images'   => $stages,

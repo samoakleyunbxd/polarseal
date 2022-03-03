@@ -20,6 +20,8 @@
         "drupal/admin_toolbar": "^3.1",
         "drupal/adminimal_theme": "^1.6",
         "drupal/backup_migrate": "^5.0",
+        "drupal/bamboo_twig": "^5.0@alpha",
+        "drupal/better_login_form_config": "^2.4",
         "drupal/console": "^1.9",
         "drupal/core-composer-scaffold": "^9.3",
         "drupal/core-project-message": "^9.3",
@@ -28,16 +30,20 @@
         "drupal/dxpr_theme": "^1.2",
         "drupal/external_media": "^1.0",
         "drupal/feeds": "^3.0@alpha",
+        "drupal/feeds_ex": "^1.0@beta",
         "drupal/field_group": "^3.2",
         "drupal/graphql": "^4.2",
+        "drupal/json_feed": "^1.2",
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.9",
+        "drupal/price": "^2.0",
         "drupal/slick_paragraphs": "^2.1",
         "drupal/tb_megamenu": "^1.6",
         "drupal/twig_tweak": "^3.1",
         "drupal/typed_data": "1.x-dev",
         "drupal/update_premium": "^1.7",
-        "drush/drush": "^11.0"
+        "drush/drush": "^11.0",
+        "softcreatr/jsonpath": "^0.5 || ^0.7 || ^0.8"
     },
     "conflict": {
         "drupal/drupal": "*"

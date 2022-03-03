@@ -1,0 +1,113 @@
+.dialog-off-canvas-main-canvas
+{
+	
+	background-image:url('../../images/assets/login_background.jpg');
+	background-size:cover;
+	height:100vh;
+	position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+html
+{
+	
+}
+
+#login_box
+{
+	padding: 90px;
+	width: 540px;
+	background-image: linear-gradient(133deg, #03547f, #1e93a7);
+    border-radius: 73px;
+    box-shadow: 0 22px 24px 0 rgba(0,0,0,0.11);
+    margin: auto;
+    margin-top: 200px;
+    padding-top: 70px;
+}
+
+#login_box #login_main_part
+{
+	background: #fff0;
+    box-shadow: none;
+}
+
+#login_box input[type="text"], #login_box input[type="password"] 
+{
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 15px;
+    background: white;
+    border-radius: 23px;
+    padding-left:22px;
+    font-family: "Arial Regular";
+   
+}
+
+
+#top_part
+{
+    margin-bottom: 30px;
+}
+
+
+#edit-submit
+{
+    margin-top: 20px;  
+    font-family: "Arial Regular";
+    font-size: 18px;
+}
+
+#login_box h1#the_logo 
+{
+    padding: 0 0 0px;
+}
+
+#login_box  .title
+{
+	display:none;
+}
+
+
+#login_box .js-form-submit.form-submit.btn-default , #login_box .button.js-form-submit.form-submit.btn-primary.btn
+{
+	background: #004C7A;
+    width: 100%;
+    border-radius: 23px;
+}
+
+#login_box  #forgotten
+{
+	color:white;
+	float:right;
+}
+
+
+#login_box .tabs
+{
+	display:none;
+}
+
+
+.alert-danger {
+    color: #ffffff;
+    background-color: #249faf;
+    border-color: #03507e;
+}
+
+.alert-danger a:hover{
+    text-decoration: underline;
+    color: #004c7a;
+}
+
+.alert-danger a
+{
+        display: block;
+}
+
+#user-pass label, #user-pass p
+{
+    color:white;
+}

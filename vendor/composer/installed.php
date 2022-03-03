@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '140959f5fcfd7da5a2fe377a0e59a4ad7fd2c9d2',
+        'reference' => '0a93ffa70aa2560c4dbcb240dd9638a0495033d7',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -44,6 +44,24 @@
             'install_path' => __DIR__ . '/../chi-teck/drupal-code-generator',
             'aliases' => array(),
             'reference' => 'e7261a46a839a3433e4bbe24eeeb21ed8805a7d3',
+            'dev_requirement' => false,
+        ),
+        'commerceguys/addressing' => array(
+            'pretty_version' => 'v1.2.2',
+            'version' => '1.2.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../commerceguys/addressing',
+            'aliases' => array(),
+            'reference' => 'fb98dfc72f8a3d12fac55f69ab2477a0fbfa9860',
+            'dev_requirement' => false,
+        ),
+        'commerceguys/intl' => array(
+            'pretty_version' => 'v1.1.1',
+            'version' => '1.1.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../commerceguys/intl',
+            'aliases' => array(),
+            'reference' => 'cab3b55dbf8c1753fe54457404082c777a8c154f',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
@@ -262,6 +280,15 @@
             'reference' => '5.0.1',
             'dev_requirement' => false,
         ),
+        'drupal/bamboo_twig' => array(
+            'pretty_version' => '5.0.0-alpha1',
+            'version' => '5.0.0.0-alpha1',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/bamboo_twig',
+            'aliases' => array(),
+            'reference' => '8.x-5.0-alpha1',
+            'dev_requirement' => false,
+        ),
         'drupal/ban' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -279,6 +306,15 @@
             'replaced' => array(
                 0 => '9.3.5',
             ),
+        ),
+        'drupal/better_login_form_config' => array(
+            'pretty_version' => '2.4.0',
+            'version' => '2.4.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/better_login_form_config',
+            'aliases' => array(),
+            'reference' => '8.x-2.4',
+            'dev_requirement' => false,
         ),
         'drupal/big_pipe' => array(
             'dev_requirement' => false,
@@ -712,6 +748,15 @@
             'reference' => '8.x-3.0-alpha11',
             'dev_requirement' => false,
         ),
+        'drupal/feeds_ex' => array(
+            'pretty_version' => '1.0.0-beta1',
+            'version' => '1.0.0.0-beta1',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/feeds_ex',
+            'aliases' => array(),
+            'reference' => '8.x-1.0-beta1',
+            'dev_requirement' => false,
+        ),
         'drupal/field' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -801,6 +846,15 @@
             'replaced' => array(
                 0 => '9.3.5',
             ),
+        ),
+        'drupal/json_feed' => array(
+            'pretty_version' => '1.2.0',
+            'version' => '1.2.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/json_feed',
+            'aliases' => array(),
+            'reference' => '8.x-1.2',
+            'dev_requirement' => false,
         ),
         'drupal/jsonapi' => array(
             'dev_requirement' => false,
@@ -946,6 +1000,15 @@
             'reference' => '8.x-1.9',
             'dev_requirement' => false,
         ),
+        'drupal/price' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/price',
+            'aliases' => array(),
+            'reference' => '2.0.0',
+            'dev_requirement' => false,
+        ),
         'drupal/quickedit' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -964,7 +1027,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '140959f5fcfd7da5a2fe377a0e59a4ad7fd2c9d2',
+            'reference' => '0a93ffa70aa2560c4dbcb240dd9638a0495033d7',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(
@@ -1212,6 +1275,12 @@
             'reference' => 'e15ac322fd5ee3b8469bcb3e16c90667b8f2e208',
             'dev_requirement' => false,
         ),
+        'flow/jsonpath' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
+            ),
+        ),
         'grasmash/expander' => array(
             'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
@@ -1318,6 +1387,15 @@
             'install_path' => __DIR__ . '/../masterminds/html5',
             'aliases' => array(),
             'reference' => 'f640ac1bdddff06ea333a920c95bbad8872429ab',
+            'dev_requirement' => false,
+        ),
+        'mtdowling/jmespath.php' => array(
+            'pretty_version' => '2.6.1',
+            'version' => '2.6.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mtdowling/jmespath.php',
+            'aliases' => array(),
+            'reference' => '9b87907a81b87bc76d19a7fb2d61e61486ee9edb',
             'dev_requirement' => false,
         ),
         'nikic/php-parser' => array(
@@ -1465,6 +1543,15 @@
             'reference' => '570292577277f06f590635381a7f761a6cf4f026',
             'dev_requirement' => false,
         ),
+        'querypath/querypath' => array(
+            'pretty_version' => '3.0.5',
+            'version' => '3.0.5.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../querypath/querypath',
+            'aliases' => array(),
+            'reference' => '6b8e2395fac61fac25bbe962f94def556cb85f7d',
+            'dev_requirement' => false,
+        ),
         'ralouphie/getallheaders' => array(
             'pretty_version' => '3.0.3',
             'version' => '3.0.3.0',
@@ -1491,6 +1578,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'softcreatr/jsonpath' => array(
+            'pretty_version' => '0.7.5',
+            'version' => '0.7.5.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../softcreatr/jsonpath',
+            'aliases' => array(),
+            'reference' => '008569bf80aa3584834f7890781576bc7b65afa7',
+            'dev_requirement' => false,
         ),
         'stack/builder' => array(
             'pretty_version' => 'v1.0.6',

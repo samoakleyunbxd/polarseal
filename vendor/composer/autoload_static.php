@@ -44,6 +44,8 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '5a12a5271c58108e0aa33355e6ac54ea' => __DIR__ . '/..' . '/drupal/console-core/src/functions.php',
+        'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
+        'e9b046393eb3376a21bcc1a30bd2fe64' => __DIR__ . '/..' . '/querypath/querypath/src/qp_functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -130,6 +132,10 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
             'Laminas\\Escaper\\' => 16,
             'Laminas\\Diactoros\\' => 18,
         ),
+        'J' => 
+        array (
+            'JmesPath\\' => 9,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -137,6 +143,10 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
             'GuzzleHttp\\' => 11,
             'Grasmash\\Expander\\' => 18,
             'GraphQL\\' => 8,
+        ),
+        'F' => 
+        array (
+            'Flow\\JSONPath\\' => 14,
         ),
         'E' => 
         array (
@@ -173,6 +183,8 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
             'Consolidation\\AnnotatedCommand\\' => 31,
             'Composer\\Semver\\' => 16,
             'Composer\\Installers\\' => 20,
+            'CommerceGuys\\Intl\\' => 18,
+            'CommerceGuys\\Addressing\\' => 24,
         ),
         'B' => 
         array (
@@ -423,6 +435,10 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-diactoros/src',
         ),
+        'JmesPath\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -442,6 +458,10 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
         'GraphQL\\' => 
         array (
             0 => __DIR__ . '/..' . '/webonyx/graphql-php/src',
+        ),
+        'Flow\\JSONPath\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/softcreatr/jsonpath/src',
         ),
         'EspressoDev\\InstagramBasicDisplay\\' => 
         array (
@@ -551,6 +571,14 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
         ),
+        'CommerceGuys\\Intl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/commerceguys/intl/src',
+        ),
+        'CommerceGuys\\Addressing\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/commerceguys/addressing/src',
+        ),
         'Bynder\\' => 
         array (
             0 => __DIR__ . '/..' . '/bynder/bynder-php-sdk/src/Bynder',
@@ -578,6 +606,13 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
             'Stack' => 
             array (
                 0 => __DIR__ . '/..' . '/stack/builder/src',
+            ),
+        ),
+        'Q' => 
+        array (
+            'QueryPath' => 
+            array (
+                0 => __DIR__ . '/..' . '/querypath/querypath/src',
             ),
         ),
         'D' => 

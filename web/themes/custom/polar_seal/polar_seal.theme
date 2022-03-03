@@ -1,4 +1,5 @@
 <?php
+use \Drupal\Core\Form\FormStateInterface;
 
 /**
  * @file
@@ -11,6 +12,24 @@
  * Implements hook_preprocess_page().
  */
 // phpcs:disable
+function polar_seal_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Add alterations specific to the user registration form
+   // $form['name']['#default_value'] = 'fghfghfgh';
+     $form['name']['#placeholder'] = t('Customer number');
+     $form['name']['#title_display'] = 'invisible';
+     $form['pass']['#placeholder'] = t('Password');
+     $form['pass']['#title_display'] = 'invisible';
+     $form['actions']['submit']['#value']= "Sign In";
+     $form['forgot'] = [
+						'#type' => 'item',
+						'#title' => t(''),
+						'#markup' => t('<input type="checkbox" value="lsRememberMe" id="rememberMe" ><span style="color:white;"> Remember me</span><a id="forgotten" href="/user/password" rel="nofollow">Forgotten password?</a>'),
+						];
+
+}
+function polar_seal_form_user_register_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  print_r($form);
+}
 function polar_seal_preprocess_page(&$variables) {
   $dxpr_theme_libraries = [
     // Bootstrap TAILORING.
