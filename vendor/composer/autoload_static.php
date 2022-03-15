@@ -118,6 +118,7 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
             'Psr\\Cache\\' => 10,
             'Pixabay\\' => 8,
             'PhpParser\\' => 10,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
@@ -406,6 +407,10 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Masterminds\\' => 
         array (

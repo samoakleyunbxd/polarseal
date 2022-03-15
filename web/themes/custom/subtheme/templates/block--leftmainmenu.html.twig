@@ -1,0 +1,259 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes }}>
+  {{ title_prefix }}
+
+
+
+<div id="menu">
+  <div id="menu-bar" onclick="menuOnClick()">
+    <div id="bar1" class="bar"></div>
+    <div id="bar2" class="bar"></div>
+    <div id="bar3" class="bar"></div>
+  </div>
+  <nav class="nav" id="nav">
+{% include directory ~ '/templates/parts/left_profile_menu.html.twig' %}
+  </nav> 
+</div>
+
+<div class="menu-bg" id="menu-bg"></div>
+
+
+
+
+
+
+{% include directory ~ '/templates/parts/left_profile_menu.html.twig' %}
+
+
+<div style="position:relative;"> 
+<img class="follow_us first" src="/themes/custom/subtheme/images/assets/follow_us_main.png">
+<img class="follow_us second" src="/themes/custom/subtheme/images/assets/follow_us_img_circle.png">
+</div>
+
+<div class="floow_us_info">
+
+<p>Follow us on social channels</p>
+<img class="" src="/themes/custom/subtheme/images/icons/right_arrow_light.png">
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+function menuOnClick() {
+  document.getElementById("menu-bar").classList.toggle("change");
+  document.getElementById("nav").classList.toggle("change");
+  document.getElementById("menu-bg").classList.toggle("change-bg");
+}
+</script>
+
+<style type="text/css">
+#menu {
+  z-index: 2;
+}
+
+#menu-bar {
+  width: 45px;
+  height: 40px;
+  margin: 30px 0 20px 20px;
+  cursor: pointer;
+}
+
+.bar {
+  height: 5px;
+ width: 70%;
+  background-color: #229fb1;
+  display: block;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+#bar1 {
+  transform: translateY(-4px);
+}
+
+#bar3 {
+  transform: translateY(4px);
+}
+
+.nav {
+  transition: 0.3s ease;
+  display: none;
+}
+
+.nav ul {
+  padding: 0 22px;
+}
+
+.nav li {
+  list-style: none;
+  padding: 12px 0;
+}
+
+.nav li a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.nav li a:hover {
+  font-weight: bold;
+}
+
+.menu-bg, #menu {
+  top: 88px;
+  left: 0;
+  position: absolute;
+}
+
+.menu-bg {
+  z-index: 1;
+  width: 0;
+  height: 0;
+  margin: 30px 0 20px 20px;
+    background: radial-gradient(circle, #004d7a, #229fb1);
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.change {
+  display: block;
+}
+
+.change .bar {
+  background-color: white;
+}
+
+.change #bar1 {
+  transform: translateY(4px) rotateZ(-45deg);
+}
+
+.change #bar2 {
+  opacity: 0;
+}
+
+.change #bar3 {
+  transform: translateY(-6px) rotateZ(45deg);
+}
+
+.change-bg {
+  width: 520px;
+  height: 460px;
+  transform: translate(-60%,-30%);
+}
+
+
+#menu  li img , #menu .second_nav img
+{
+ 
+    display: none;
+}
+
+
+#menu .second_nav {
+    padding-left: 20px;
+}
+
+
+
+
+#menu .nav li {
+    list-style: none;
+    padding: 16px;
+}
+
+
+
+#menu  li {
+    height: 30px;
+    width: 145px;
+
+}
+
+#menu .second_nav a {
+ 
+    color: #ffffff;
+}
+
+
+
+@media(max-width:700px)
+{
+
+.left_profile_menu, #block-leftmainmenu img.follow_us, #block-leftmainmenu  .floow_us_info
+{
+	display:none;
+}
+
+#menu .left_profile_menu
+{
+	display:block;
+}
+
+
+
+#sidebar_first {
+    width: 0%;
+        padding: 0px;
+}
+
+
+.profile-column {
+
+    max-width: 100%;
+    margin-bottom:20px;
+
+}
+
+
+
+
+}
+
+@media(min-width:701px)
+{
+#menu
+{
+	display:none;
+}
+}
+
+
+
+
+</style>

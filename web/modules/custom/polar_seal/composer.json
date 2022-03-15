@@ -1,0 +1,13 @@
+{
+    "name": "polar_seal",
+    "type": "drupal-module",
+    "description": "Custom functionality for Website",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/polar_seal",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/polar_seal",
+        "source": "http://cgit.drupalcode.org/polar_seal",
+    },
+}

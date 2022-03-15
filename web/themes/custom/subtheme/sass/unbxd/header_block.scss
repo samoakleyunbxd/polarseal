@@ -1,0 +1,21 @@
+#block-headertopbar
+{
+margin-top:20px;
+background: #f7faff;
+margin-bottom:80px;
+}
+
+#block-headertopbar
+{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+#block-headertopbar h3
+{
+    margin-bottom: 0px;
+    padding-top: 11px;
+    margin-left: 10%;
+}

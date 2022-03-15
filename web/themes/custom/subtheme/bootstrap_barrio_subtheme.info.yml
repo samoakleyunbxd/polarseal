@@ -1,0 +1,32 @@
+name: Bootstrap Barrio Subtheme
+type: theme
+description: 'Basic structure for a Bootstrap Barrio SubTheme.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+base theme: bootstrap_barrio
+
+libraries:
+  - bootstrap_barrio_subtheme/bootstrap_cdn
+  - bootstrap_barrio_subtheme/global-styling
+
+regions:
+    secondary_header: 'Secondary Header'
+    navigation: 'Navigation'
+    navigation_collapsible: 'Navigation (Collapsible)'
+    highlighted: 'Hero Region'
+    page_title: 'Page Title'
+    help: 'Help'
+    content_top: 'Content Top'
+    content: 'Content'
+    content_bottom: 'Content Bottom'
+    sidebar_first: 'Primary'
+    sidebar_second: 'Secondary'
+    header: 'Header'
+    footer: 'Footer'
+    page_top: 'Page top'
+    page_bottom: 'Page bottom'
+
+# Information added by Drupal.org packaging script on 2021-10-11
+version: '5.5.4'
+project: 'bootstrap_barrio'
+datestamp: 1633918196

@@ -4,18 +4,10 @@ global-styling:
       css/dxpr_theme_subtheme.css: {}
       css/styles.css: {}
 
-
-unbxs-styling:
-  css:
-    theme:
-      css/test/test.css: {}
-
 unbxd-styling-login-form:
   css:
     theme:
       css/unbxd/login-form.css: {}
-
-
 
 bootstrap-3:
   css:

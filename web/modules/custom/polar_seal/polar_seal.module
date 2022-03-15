@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains polar_seal.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function polar_seal_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the polar_seal module.
+    case 'help.page.polar_seal':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom functionality for Website') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function polar_seal_theme() {
+  return [
+    'polar_seal' => [
+      'render element' => 'children',
+    ],
+  ];
+}
