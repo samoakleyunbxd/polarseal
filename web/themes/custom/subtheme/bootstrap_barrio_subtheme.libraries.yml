@@ -26,6 +26,11 @@ unbxd-styling-price-table:
     theme:
       css/unbxd/price-table.css: {}
       
+unbxd-styling-article-slider:
+  css:
+    theme:
+      css/unbxd/article-slider.css: {}
+
 bootstrap:
   js:
     /libraries/popper.js/dist/umd/popper.min.js: { weight: -49 }

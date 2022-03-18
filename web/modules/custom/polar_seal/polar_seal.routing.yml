@@ -1,0 +1,7 @@
+
+polar_seal.views_ajax:
+  path: '/admin/views/{nojs}/{view_id}/{display_id}/{args}'
+  defaults:
+    _controller: '\Drupal\polar_seal\Controller\PolarSealViewAjaxController::ajaxView'
+  requirements:
+    _permission: 'access content'

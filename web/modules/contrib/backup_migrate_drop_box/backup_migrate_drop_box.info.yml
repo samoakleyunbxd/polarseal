@@ -1,0 +1,15 @@
+name: 'Backup and Migrate: Dropbox'
+description: 'Provides Dropbox Storage destination for Backup & Migrate module.'
+package: 'Dropbox'
+php: 7.1
+type: module
+core_version_requirement: ^8.7.7 || ^9
+configure: backup_migrate.quick_backup
+dependencies:
+  - backup_migrate:backup_migrate
+  - key:key
+
+# Information added by Drupal.org packaging script on 2022-03-07
+version: '5.0.0'
+project: 'backup_migrate_drop_box'
+datestamp: 1646661717

@@ -1,0 +1,21 @@
+{
+    "name": "drupal/backup_migrate_drop_box",
+    "description": "Provides Dropbox Storage destination for Backup & Migrate module.",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "homepage": "https://drupal.org/project/backup_migrate_drop_box",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "George Anderson (geoanders)",
+            "homepage": "https://www.drupal.org/u/geoanders",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "drupal/core": "^8.7.7 || ^9",
+        "drupal/backup_migrate": "^5.0",
+        "drupal/key": "^1.15",
+        "kunalvarma05/dropbox-php-sdk": "^0.3.0"
+    }
+}

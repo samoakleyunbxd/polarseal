@@ -3,6 +3,17 @@
 background: #f7faff;
 }
 
+#main-wrapper
+{
+    background-image: url(/themes/custom/subtheme/images/assets/back_wave.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    position: relative;
+    background-position-x: center;
+}
+
+
 
 
 .page_overlay
@@ -192,4 +203,17 @@ p,h1,h2,h3,h4,li,a,span
     width: 1px;
     border: 2px solid #229fb1;
     left: -16px;
+}
+
+
+
+
+@media(max-width:999px)
+{
+    
+h2
+{
+    font-size: 25px!important;
+}
+
 }

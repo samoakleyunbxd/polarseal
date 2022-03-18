@@ -16,7 +16,7 @@ function polar_seal_help($route_name, RouteMatchInterface $route_match) {
     case 'help.page.polar_seal':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Custom functionality for Website') . '</p>';
+      $output .= '<p>' . t('Custom Site Functionality') . '</p>';
       return $output;
 
     default:

@@ -49,7 +49,7 @@ h3
 
 #main-wrapper
 {
-    background:#f7faff;
+    background-color:#f7faff;
 
 }
 
@@ -386,11 +386,19 @@ justify-content: center;
     
     position: absolute;
     top: -27px;
-    right: 19px;
+    right: 7px;
     margin-top: 0px;
     z-index: 1;
     width: 53px;
+    transition:all .5s;
+        transform: rotate(0deg);
 }
+
+
+
+
+
+
 
 
 
@@ -452,6 +460,7 @@ justify-content: center;
 .profile_hero_section
 {
     margin-bottom: 70px;
+    position: relative;
 
 .profile_img
 {
@@ -664,3 +673,314 @@ color:white;
     background-position: right;
     background-repeat: no-repeat;
 }
+
+
+
+/* LEFT SIDEBAR */
+
+#menu {
+  z-index: 2;
+}
+
+#menu-bar {
+  width: 45px;
+  height: 40px;
+  margin: 30px 0 20px 20px;
+  cursor: pointer;
+}
+
+.bar {
+  height: 5px;
+ width: 70%;
+  background-color: #229fb1;
+  display: block;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+#bar1 {
+  transform: translateY(-4px);
+}
+
+#bar3 {
+  transform: translateY(4px);
+}
+
+.nav {
+  transition: 0.3s ease;
+  display: none;
+}
+
+.nav ul {
+  padding: 0 22px;
+}
+
+.nav li {
+  list-style: none;
+  padding: 12px 0;
+}
+
+.nav li a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.nav li a:hover {
+  font-weight: bold;
+}
+
+.menu-bg, #menu {
+  top: 88px;
+  left: 0;
+  position: absolute;
+}
+
+.menu-bg {
+  z-index: 1;
+  width: 0;
+  height: 0;
+  margin: 30px 0 20px 20px;
+    background: radial-gradient(circle, #004d7a, #229fb1);
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.change {
+  display: block;
+}
+
+.change .bar {
+  background-color: white;
+}
+
+.change #bar1 {
+  transform: translateY(4px) rotateZ(-45deg);
+}
+
+.change #bar2 {
+  opacity: 0;
+}
+
+.change #bar3 {
+  transform: translateY(-6px) rotateZ(45deg);
+}
+
+.change-bg {
+  width: 520px;
+  height: 460px;
+  transform: translate(-60%,-30%);
+}
+
+
+#menu  li img , #menu .second_nav img
+{
+ 
+    display: none;
+}
+
+
+#menu .second_nav {
+    padding-left: 20px;
+}
+
+
+
+
+#menu .nav li {
+    list-style: none;
+    padding: 16px;
+}
+
+
+
+#menu  li {
+    height: 30px;
+    width: 145px;
+
+}
+
+#menu .second_nav a {
+ 
+    color: #ffffff;
+}
+
+
+
+@media(max-width:700px)
+{
+
+.left_profile_menu, #block-leftmainmenu img.follow_us, #block-leftmainmenu  .floow_us_info
+{
+    display:none;
+}
+
+#menu .left_profile_menu
+{
+    display:block;
+}
+
+
+
+#sidebar_first {
+    width: 0%;
+        padding: 0px;
+}
+
+
+.profile-column {
+
+    max-width: 100%;
+    margin-bottom:20px;
+
+}
+
+
+
+
+}
+
+@media(min-width:701px)
+{
+#menu
+{
+    display:none;
+}
+}
+
+
+
+ .follow_wrapper
+{
+      position: relative;
+    z-index: 10;
+    display: block;
+    cursor: pointer;
+}
+
+
+
+  .follow_wrapper:hover .second
+  {
+  transform:rotate(-90deg)!important;
+    top: -37px !important;
+    right: 25px !important;
+  }
+
+
+
+
+
+
+/* PROJECTS SECTION */
+
+
+
+.projects-list .node__meta
+{
+    display:none;
+}
+
+
+
+
+
+.projects-list .node--type-projects
+{
+        background: white;
+    box-shadow: 1px 1px 23px 1px lightgrey;
+    border-radius: 10px;
+}
+
+
+
+
+
+.projects-list .field--name-title.field--type-string
+{
+    font-size: 16px;
+        padding-left: 41px;
+}
+
+
+
+.projects-list .field--name-title.field--type-string::before {
+position: absolute;
+    left: 10px;
+    content: "";
+    display: block;
+    background-image: url(/themes/custom/subtheme/images/icons/rocket_icon.png);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    top: 9px;
+
+}
+
+.projects-list .field--name-title.field--type-string::before {
+      background-color: #ffffff00;
+          border:none;
+}
+
+
+
+.projects-list  .node--view-mode-teaser h2 {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0px;
+}
+
+
+
+.projects-list  .node--view-mode-teaser {
+    border-bottom: 1px solid #d3d7d9;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0px;
+    width: 90%;
+    position: relative;
+   
+}
+
+.profile-column.projects-list
+{
+
+     margin-top: 60px;
+        background-image:none;
+           margin-bottom: 60px;
+}
+
+
+.profile-column.projects-list::after
+{
+
+    position: absolute;
+    right: 0px;
+    content: "";
+    display: block;
+    background-image: url(/themes/custom/subtheme/images/assets/circle_whiteish.png);
+    width: 59px;
+    height: 68px;
+    background-size: contain;
+    bottom: 0px;
+    border-radius: 0px 0px 33px;
+
+}
+
+
+
+.projects-list  .node--view-mode-teaser::after {
+    position: absolute;
+    right: 14px;
+    content: "";
+    display: block;
+    background-image: url(/themes/custom/subtheme/images/icons/right_arrow.png);
+    width: 23px;
+    height: 23px;
+    background-size: contain;
+    top: 14px;
+}
+
+
+/* PROJECT SECTION END */

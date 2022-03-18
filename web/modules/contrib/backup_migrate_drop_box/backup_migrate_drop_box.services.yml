@@ -1,0 +1,8 @@
+services:
+  backup_migrate_drop_box.destination:
+    class: Drupal\backup_migrate_drop_box\Destination\DropboxDestination
+    parent: default_plugin_manager
+  backup_migrate_drop_box.route_subscriber:
+    class: Drupal\backup_migrate_drop_box\Routing\DropboxRouteSubscriber
+    tags:
+      - { name: event_subscriber }

@@ -103,7 +103,8 @@ position: absolute;
 */
 
 
-    z-index: -2;
+     transform: translateX(-50%) scale(0);
+    opacity: 0;
     -webkit-transition: all 1s;
     transition: all 1s;
     padding-bottom: 50px;
@@ -127,8 +128,7 @@ position: absolute;
 .show_price_table
 {
 
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(1);
     opacity: 1;
     z-index: 10;
 

@@ -1,6 +1,7 @@
 
 
 {%  set path = path('<current>') %}
+{% set user = bamboo_load_currentuser() %}
 
 <div class="left_profile_menu">
 <ul>
@@ -15,7 +16,8 @@
 
 </div>
 
-<li class="account {%  if path=="/user" %}  active {% endif %}"><a href="/user"><img src="/{{ directory }}/images/icons/My-account.png" alt="{{ site_name }}">My Account</a></li>
+
+<li class="account {%  if path=="/user/" ~ user.uid.value  %}  active {% endif %}"><a href="/user"><img src="/{{ directory }}/images/icons/My-account.png" alt="{{ site_name }}">My Account</a></li>
 </ul>
 </div>
 

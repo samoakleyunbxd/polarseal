@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Primary hook implementations for Backup Migrate: Dropbox.
+ */
+
+use Drupal\backup_migrate\Core\Main\BackupMigrateInterface;
+
+/**
+ * Implements hook_backup_migrate_service_object_alter().
+ */
+function backup_migrate_drop_box_backup_migrate_service_object_alter(BackupMigrateInterface &$bam, $options = []) {
+}
