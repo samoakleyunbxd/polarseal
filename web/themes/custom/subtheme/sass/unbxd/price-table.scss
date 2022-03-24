@@ -41,7 +41,7 @@
     border-radius: 20px;
     border-collapse: collapse;
     padding: 30px;
-    box-shadow: 0 0 7px 2px rgb(0 0 0 / 8%);
+    box-shadow: none;
     background: #fff;
 
 		tr,td, th
@@ -89,9 +89,12 @@ tbody tr:nth-child(1)
 .polar-price-table
 {
 position: absolute;
-   margin-top: -183px;
-    left: 50%;
-    width: 100%;
+    margin-top: -430px;
+     z-index: 10;
+ 
+    transform: scale(0);
+    opacity: 0;
+    z-index: -1;
 
 
     /*
@@ -103,8 +106,8 @@ position: absolute;
 */
 
 
-     transform: translateX(-50%) scale(0);
-    opacity: 0;
+    // transform: translateX(-50%) scale(0);
+   // opacity: 0;
     -webkit-transition: all 1s;
     transition: all 1s;
     padding-bottom: 50px;
@@ -114,6 +117,7 @@ position: absolute;
 
 .table-responsive {
     padding-right: 0px;
+    margin-top: 58px;
 }
 
 
@@ -128,7 +132,7 @@ position: absolute;
 .show_price_table
 {
 
-    transform: translateX(-50%) scale(1);
+    transform: scale(1);
     opacity: 1;
     z-index: 10;
 
@@ -149,6 +153,41 @@ position: absolute;
 
 
 
+
+
+
+
+}
+
+
+
+
+.pricing_section
+{
+	
+
+
+ul 
+{
+      height: auto;
+    padding-bottom: 20px;
+
+a
+{
+text-decoration:none;
+}
+
+li
+{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+}
+
+
+
+    
 
 
 

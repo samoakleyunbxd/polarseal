@@ -150,8 +150,11 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
         ),
         'G' => 
         array (
+            'Guzzle\\Service\\Loader\\' => 22,
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\Command\\Guzzle\\' => 26,
+            'GuzzleHttp\\Command\\' => 19,
             'GuzzleHttp\\' => 11,
             'Grasmash\\Expander\\' => 18,
             'GraphQL\\' => 8,
@@ -478,6 +481,10 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
         array (
             0 => __DIR__ . '/..' . '/illuminate/contracts',
         ),
+        'Guzzle\\Service\\Loader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kezor/guzzle-description-loader/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -485,6 +492,14 @@ class ComposerStaticInit43ae3bae52ab5c964fb2d79df6b786a0
         'GuzzleHttp\\Promise\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\Command\\Guzzle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle-services/src',
+        ),
+        'GuzzleHttp\\Command\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/command/src',
         ),
         'GuzzleHttp\\' => 
         array (

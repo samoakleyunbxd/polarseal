@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'c799a7da3e1062a460fea1106d84be69884ace6d',
+        'reference' => '7dc96392fc6a39050a31056c783f250fa1a18853',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -580,6 +580,15 @@
             'reference' => '2.0.0',
             'dev_requirement' => false,
         ),
+        'drupal/contact_storage' => array(
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/contact_storage',
+            'aliases' => array(),
+            'reference' => '8.x-1.1',
+            'dev_requirement' => false,
+        ),
         'drupal/content_moderation' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -979,6 +988,15 @@
                 0 => '9.3.7',
             ),
         ),
+        'drupal/http_client_manager' => array(
+            'pretty_version' => '2.5.0',
+            'version' => '2.5.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/http_client_manager',
+            'aliases' => array(),
+            'reference' => '8.x-2.5',
+            'dev_requirement' => false,
+        ),
         'drupal/image' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -1207,7 +1225,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'c799a7da3e1062a460fea1106d84be69884ace6d',
+            'reference' => '7dc96392fc6a39050a31056c783f250fa1a18853',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(
@@ -1542,6 +1560,15 @@
             'reference' => '95d6037344a4be1dd5f8e0b0b2571a28c397578f',
             'dev_requirement' => false,
         ),
+        'guzzlehttp/command' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/command',
+            'aliases' => array(),
+            'reference' => '2aaa2521a8f8269d6f5dfc13fe2af12c76921034',
+            'dev_requirement' => false,
+        ),
         'guzzlehttp/guzzle' => array(
             'pretty_version' => '6.5.5',
             'version' => '6.5.5.0',
@@ -1549,6 +1576,15 @@
             'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
             'aliases' => array(),
             'reference' => '9d4290de1cfd701f38099ef7e183b64b4b7b0c5e',
+            'dev_requirement' => false,
+        ),
+        'guzzlehttp/guzzle-services' => array(
+            'pretty_version' => '1.1.3',
+            'version' => '1.1.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/guzzle-services',
+            'aliases' => array(),
+            'reference' => '9e3abf20161cbf662d616cbb995f2811771759f7',
             'dev_requirement' => false,
         ),
         'guzzlehttp/promises' => array(
@@ -1603,6 +1639,15 @@
             'install_path' => __DIR__ . '/../illuminate/macroable',
             'aliases' => array(),
             'reference' => 'aed81891a6e046fdee72edd497f822190f61c162',
+            'dev_requirement' => false,
+        ),
+        'kezor/guzzle-description-loader' => array(
+            'pretty_version' => 'v0.0.6',
+            'version' => '0.0.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kezor/guzzle-description-loader',
+            'aliases' => array(),
+            'reference' => 'd576cb1e2c896d6850585f5e9ee58d5b88495c6a',
             'dev_requirement' => false,
         ),
         'kunalvarma05/dropbox-php-sdk' => array(

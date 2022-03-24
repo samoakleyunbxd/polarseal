@@ -1,0 +1,13 @@
+{
+    "name": "marcin_first_machine",
+    "type": "drupal-module",
+    "description": "My first module",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/marcin_first_machine",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/marcin_first_machine",
+        "source": "http://cgit.drupalcode.org/marcin_first_machine",
+    },
+}

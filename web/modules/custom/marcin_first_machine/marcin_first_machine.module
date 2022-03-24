@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains marcin_first_machine.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function marcin_first_machine_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the marcin_first_machine module.
+    case 'help.page.marcin_first_machine':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My first module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function marcin_first_machine_theme() {
+  return [
+    'marcin_first_machine' => [
+      'render element' => 'children',
+    ],
+  ];
+}

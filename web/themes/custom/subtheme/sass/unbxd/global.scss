@@ -217,3 +217,34 @@ h2
 }
 
 }
+
+
+
+
+.white_rounded.title h2::before {
+    background: #229fb1;
+    position: absolute;
+    left: -9px;
+    content: "";
+    display: block;
+    height: 36px;
+    width: 1px;
+    border: 2px solid #229fb1;
+    left: -16px;
+}
+
+
+.white_rounded.title .block_header ::after {
+display:none;
+}
+
+
+
+
+
+.white_rounded.title h2
+{
+      margin: auto;
+    display: inline-block;
+    position: relative;
+}

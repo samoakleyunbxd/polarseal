@@ -10,6 +10,7 @@ global-styling:
       css/unbxd/header_block.css: {}
       css/unbxd/global.css: {}
       css/unbxd/profile-page.css: {}
+      css/config/vars.css: {}
 
 unbxd-styling-login-form:
   css:
@@ -25,6 +26,12 @@ unbxd-styling-price-table:
   css:
     theme:
       css/unbxd/price-table.css: {}
+
+unbxd-styling-order-table:
+  css:
+    theme:
+      css/unbxd/order-table.css: {}
+
       
 unbxd-styling-article-slider:
   css:
@@ -53,3 +60,4 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
+

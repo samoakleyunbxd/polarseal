@@ -1,0 +1,5 @@
+name: 'marcin_first'
+type: module
+description: 'My first module'
+core: 8.x
+package: 'Custom'

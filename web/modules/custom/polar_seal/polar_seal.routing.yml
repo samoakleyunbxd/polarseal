@@ -5,3 +5,11 @@ polar_seal.views_ajax:
     _controller: '\Drupal\polar_seal\Controller\PolarSealViewAjaxController::ajaxView'
   requirements:
     _permission: 'access content'
+
+polar_seal.http_controller_fetchorders:
+  path: '/polar_seal/fetchorders'
+  defaults:
+    _controller: '\Drupal\polar_seal\Controller\HttpController::fetch'
+    _title: 'fetch'
+  requirements:
+    _permission: 'access content'

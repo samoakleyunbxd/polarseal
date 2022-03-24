@@ -1,0 +1,8 @@
+
+marcin_first_machine.default_controller_hello:
+  path: '/marcin_first_machine/hello/{name}'
+  defaults:
+    _controller: '\Drupal\marcin_first_machine\Controller\DefaultController::hello'
+    _title: 'Marcin_controller'
+  requirements:
+    _permission: 'access content'

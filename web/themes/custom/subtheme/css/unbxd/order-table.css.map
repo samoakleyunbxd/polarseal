@@ -1,0 +1,1 @@
+{"version":3,"sources":["unbxd/order-table.scss"],"names":[],"mappings":"AAAA,4CAEA,UAAA,CACA,UAAA,CACA,WAAA,CACA,kBAAA,CACE,wBAAA","file":"order-table.css","sourcesContent":[".view-order-list .field--name-title::before\n{\ncontent:\"\";\nwidth:20px;\nheight:20px;\nborder-radius:25px;\n  background-color:#79bc38;\n}\n"]}

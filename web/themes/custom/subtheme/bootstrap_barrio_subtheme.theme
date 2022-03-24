@@ -71,8 +71,7 @@ function bootstrap_barrio_subtheme_preprocess_block (&$variables) {
 
 
 
-
-function  bootstrap_barrio_subtheme_preprocess_node (&$variables) {
+function bootstrap_barrio_subtheme_preprocess_node (&$variables) {
   $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
 
   // Get all Flower node IDs.
@@ -82,6 +81,68 @@ function  bootstrap_barrio_subtheme_preprocess_node (&$variables) {
   $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
 
   // Pass them to page.html.twig.
+  $variables['price_table'] = $nodes;
+
+
+
+  $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+
+  // Get all Flower node IDs.
+  $nids = $query->condition('type', 'article')->execute();
+
+  // Load all Flower nodes.
+  $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+
+  // Pass them to page.html.twig.
+  $variables['articles'] = $nodes;
+
+  
+}
+
+function bootstrap_barrio_subtheme_preprocess_page (&$variables) {
+
+
+  $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+
+  // Get all Flower node IDs.
+  $nids = $query->condition('type', 'article')->execute();
+
+  // Load all Flower nodes.
+  $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+
+  // Pass them to page.html.twig.
   $variables['articles2'] = $nodes;
 
+
+
+
+
+
+  $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+
+  // Get all Flower node IDs.
+  $nids = $query->condition('type', 'pricelist')->execute();
+
+  // Load all Flower nodes.
+  $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+
+  // Pass them to page.html.twig.
+  $variables['price_table'] = $nodes;
+
+
+
+
+  $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+
+  // Get all Flower node IDs.
+  $nids = $query->condition('type', 'orders')->execute();
+
+  // Load all Flower nodes.
+  $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+
+  // Pass them to page.html.twig.
+  $variables['orders_list'] = $nodes;
+
+
+  
 }
