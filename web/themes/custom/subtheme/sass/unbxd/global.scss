@@ -15,6 +15,14 @@ background: #f7faff;
 
 
 
+#sidebar_first .accordion-button:not(.collapsed) {
+    color: #2ca4b4!important;
+    background-color: #ffe4c400;
+    box-shadow: none;
+}
+
+
+
 
 .page_overlay
 {

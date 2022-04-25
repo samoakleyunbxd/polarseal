@@ -1,0 +1,400 @@
+
+.individual_order
+{
+
+
+
+.profile-column
+{
+height: auto;
+}
+
+.project.single
+{
+background:transparent;
+
+.block_header h2 {
+    text-align: center;
+        margin: auto;
+    display: inline-block;
+    position: relative;
+        font-weight: 600;
+}
+
+
+
+
+.block_header h2::before {
+    background: #229fb1;
+    position: absolute;
+    left: -9px;
+    content: "";
+    display: block;
+     height: 70px;
+    width: 1px;
+    border: 2px solid #229fb1;
+    left: -16px;
+}
+
+
+
+}
+
+
+
+
+.col-2
+{
+display:flex;
+position: relative;
+padding-bottom: 13px;
+
+
+div
+{
+	width:65%;
+}
+
+
+}
+
+
+.order_nr
+{
+font-size:16px;
+font-weight:600;
+color:#004C7A;
+}
+
+
+.info
+{
+	font-size:14px;
+}
+
+
+
+
+.col-2::after {
+    background: #004c7a;
+    width: 85%;
+    margin: auto;
+    height: 1px;
+    position: absolute;
+    content: "";
+    display: block;
+    opacity: .17;
+    left: 13px;
+   
+bottom:0px;
+}
+
+
+
+
+.order-details
+{
+
+	height:50px;
+	    margin-bottom: 30px;
+}
+
+
+
+.box
+{
+        box-shadow: 0 0 44px 0 rgb(0 0 0 / 8%);
+        padding-bottom: 44px;
+    border-radius: 30px;
+    margin-bottom: 50px;
+}
+
+
+
+.table_head_wrapper
+{
+        border-radius: 30px 30px 0px 0px;
+    background-color: #d2f4fc;
+    height:30px;
+        position: relative;
+}
+
+
+
+
+tr
+{
+        background: none;
+}
+
+
+.order-table
+{
+
+margin-top: 0px;
+
+thead
+{
+
+  background-color: #d2f4fc;
+  text-align:center;
+
+
+td
+{
+    color: #004c7a;
+    border: none;
+    font-size: 18px;
+    text-align: center;
+    padding: 2px 23px 25px 30px;
+    font-weight:700;
+}
+
+
+}
+
+
+
+
+.heading_info
+{
+     border: none; 
+position:relative;
+
+td
+{
+text-allign:center;
+border: none; 
+background:white;
+padding: 20px 0px 20px 0px;
+text-align: center;
+
+
+
+
+
+}
+
+}
+
+
+
+
+.heading_info td:first-child:before
+{
+    background: #229fb1;
+    position: absolute;
+    left: 0px;
+    content: "";
+    display: block;
+    height:100%;
+    background:#76C124;
+    width: 6px;
+    top: 0px;
+
+}
+
+
+
+
+
+
+    
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+.shippment
+{
+
+
+.shippment_info
+{
+        display: flex;
+    justify-content: space-between;
+    background: #F7FAFF;
+    padding: 15px;
+    font-size:14px;
+}
+
+
+
+.shippment_tracking
+{
+    border: 1px solid rgba(0,77,123,0.13);
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.77);
+    display: flex;
+    justify-content: space-between;
+    padding: 35px;
+    padding-bottom: 10px;
+    padding-top: 15px;
+    margin-bottom:50px;
+    width: 95%;
+    margin: auto;
+    flex-flow: row wrap;
+
+.track_title
+{
+
+color:#004C7A;
+font-size:16px;
+    flex: 20%;
+    display: flex;
+}
+
+
+
+.track_info_graph
+{
+    flex: 80%;
+    display: flex;
+    justify-content: flex-start;
+
+
+div
+{
+    padding:20px;
+}
+
+}
+
+.track_info
+{
+    flex: 80%;
+    display: flex;
+    justify-content: flex-start;
+
+
+
+
+div
+{
+    padding:20px;
+}
+
+}
+
+
+
+.round_dot
+{
+    background: #00dfff;
+    width: 14px;
+    height: 14px;
+    border-radius: 50px;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+
+
+}
+
+
+.round_dot_outer
+{
+    background: #056370;
+    width: 8px;
+    height: 8px;
+    border-radius: 40px;
+    opacity: .3;
+    position: absolute;
+    -webkit-transform: Scale(0.5);
+    transform: Scale(0.5);
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+
+}
+
+
+
+
+
+.round_dot::after
+{
+    content: "";
+    width: 190px;
+    background: #004c7a;
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: -3;
+    height: 2px;
+}
+
+
+.round_dot.last::after
+{
+
+    content: "";
+    width: 80px;
+    background: white;
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: -3;
+    height: 4px;
+}
+
+
+.round_dot_outer.left, .round_dot.left
+{
+    left: 22%; 
+    
+}
+
+table
+{
+    width: 80%;
+    background: #fdfeff;
+    background-color: #fdfeff;
+
+
+td,tr
+{
+        background: #fdfeff;
+    background-color: #fdfeff;
+
+}
+
+
+td
+{
+     width: 25% ;
+         position: relative;
+             text-align: center;
+}
+
+
+
+}
+
+
+
+
+
+}
+
+
+
+}

@@ -32,11 +32,20 @@ unbxd-styling-order-table:
     theme:
       css/unbxd/order-table.css: {}
 
+unbxd-styling-samples-columns:
+  css:
+    theme:
+      css/unbxd/samples-columns.css: {}
       
 unbxd-styling-article-slider:
   css:
     theme:
       css/unbxd/article-slider.css: {}
+
+unbxd-styling-single-order:
+  css:
+    theme:
+      css/unbxd/single-order.css: {}
 
 bootstrap:
   js:

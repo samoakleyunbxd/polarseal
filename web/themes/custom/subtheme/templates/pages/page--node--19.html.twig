@@ -186,10 +186,18 @@
 </tr>
 </thead>
 
-
+<!-- Get Current User -->
+{% set user = bamboo_load_currentuser() %}
 
 
   {% for item in orders_list  %}
+
+
+
+
+{% if(item.revision_uid.target_id == user.uid.value) %}
+
+
   <tr class="contextual-region node node--type-orders node--promoted node--view-mode-teaser clearfix"> 
   
 
@@ -198,6 +206,10 @@
 
 
 </tr>
+
+{% endif %}
+
+
   {% endfor %}
 
 </table>

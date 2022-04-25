@@ -68,7 +68,8 @@
  */
 #}
 {{ attach_library('bootstrap_barrio_subtheme/unbxd-styling-article-slider') }}
-
+{{ attach_library('bootstrap_barrio_subtheme/unbxd-order-table') }}
+{{ attach_library('bootstrap_barrio_subtheme/unbxd-styling-samples-columns') }}
 
 <div id="page-wrapper">
   <div id="page">
@@ -149,7 +150,131 @@
               <main{{ content_attributes }}>
                 <section class="section">
                   <a id="main-content" tabindex="-1"></a>
-                  {{ page.content }}
+               
+
+
+
+<!-- Get Current User -->
+{% set user = bamboo_load_currentuser() %}
+
+
+
+
+
+
+ 
+<div class="profile-column project white_rounded title">
+
+  <div class="block_header" style="    flex-flow: row wrap;">
+  <h2 class="bold bottom_null">SAMPLES</h2>
+  </div>
+
+
+
+
+
+<div class="row wrapper">
+
+
+
+{% for project in project_list %} 
+
+
+
+
+
+
+
+{% if(project.revision_uid.target_id == user.uid.value) %}
+
+
+
+<div class="col-sm-4 white_rounded column">
+<p class="column_header">{{project.title.value}}</p>
+
+
+
+{% for item in project.field_file.value %} 
+
+
+{% set link =  file_url(project.field_file[loop.index-1].entity.uri.value)  %}
+
+
+
+<a href="{{ link }}">
+<div class="media_item {% if '.jpg' in link %} img_type {% endif %} {% if '.png' in link %} img_type {% endif %} {% if '.txt' in link %} txt_type {% endif %}">
+
+
+
+<span class="title">
+{{item.description}}
+ </span>
+
+</div>
+</a>
+
+{% endfor %}
+
+
+<a href="/node/{{project.nid.value}}/edit"><button class="upload_btn"> <img width="25" src="/themes/custom/subtheme/images/icons/upload_cloud.png">Upload Media</button></a>
+
+</div>
+
+
+
+
+
+{% endif %}
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+<style type="text/css">
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="profile-column articles"> 
 
