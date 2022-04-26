@@ -70,6 +70,10 @@ function bootstrap_barrio_subtheme_preprocess_block (&$variables) {
   // Pass them to page.html.twig.
   $variables['articles'] = $nodes;
 
+
+
+
+
 }
 
 
@@ -101,8 +105,48 @@ function bootstrap_barrio_subtheme_preprocess_node (&$variables) {
   // Pass them to page.html.twig.
   $variables['articles'] = $nodes;
 
+
+
+    $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+
+  // Get all Flower node IDs.
+  $nids = $query->condition('type', 'notifications')->execute();
+
+  // Load all Flower nodes.
+  $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+
+  // Pass them to page.html.twig.
+  $variables['notifications'] = $nodes;
+
+
+
+
+}
+
+function bootstrap_barrio_subtheme_preprocess_user (&$variables) 
+{
+
+
+    $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+
+  // Get all Flower node IDs.
+  $nids = $query->condition('type', 'notifications')->execute();
+
+  // Load all Flower nodes.
+  $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+
+  // Pass them to page.html.twig.
+  $variables['notifications'] = $nodes;
+
+
+
+
   
 }
+
+
+
+
 
 function bootstrap_barrio_subtheme_preprocess_page (&$variables) {
 
@@ -163,6 +207,20 @@ function bootstrap_barrio_subtheme_preprocess_page (&$variables) {
   $variables['project_list'] = $nodes;
 
 
+
+
+
+
+  $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+
+  // Get all Flower node IDs.
+  $nids = $query->condition('type', 'notifications')->execute();
+
+  // Load all Flower nodes.
+  $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+
+  // Pass them to page.html.twig.
+  $variables['notifications3'] = $nodes;
 
 
 

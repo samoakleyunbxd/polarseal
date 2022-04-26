@@ -11,7 +11,7 @@ global-styling:
       css/unbxd/global.css: {}
       css/unbxd/profile-page.css: {}
       css/config/vars.css: {}
-
+      css/unbxd/mobile.css: {}
 unbxd-styling-login-form:
   css:
     theme:

@@ -46,7 +46,12 @@
 <input class="submit_img" type="image" src="/{{ directory }}/images/icons/search.png" alt="Submit Form" />
 </div>
 </form>
-<div class="round_icon"><img src="/{{ directory }}/images/icons/bell_icon.png" alt="{{ site_name }}"></div>
+<div class="round_icon bell_notification" onclick='toggle_notification()'><img src="/{{ directory }}/images/icons/bell_icon.png" alt="{{ site_name }}">
+<div id="header_notification">
+
+{{  drupal_view('notifications', 'block_1') }} 
+</div>
+</div>
 <div class="round_icon"><img class="profile_img" width="85" src="{{ file_url(user2.user_picture.entity.uri.value) }}"></div>
 <div class="round_icon"><a href="/user/logout"><img src="/{{ directory }}/images/icons/exit_icon.png" alt="{{ site_name }}"></a></div>
 </div>
@@ -57,7 +62,68 @@
 
 
 
+
+
+
+
+<script type="text/javascript">
+
+
+function toggle_notification()
+{
+
+jQuery('#header_notification').toggleClass('show_it');
+
+}
+</script>
+
+
+
+
 <style type="text/css">
+
+
+#header_notification .form-item-field-seen-value, #header_notification #edit-submit-notifications--2
+{
+	display:none;
+}
+
+
+
+
+#header_notification 
+{
+    top: 100%;
+    position: absolute;
+    width: 157px;
+    height: auto;
+    background: white;
+    z-index: 1;
+    padding: 10px;
+    padding-top: 0px;
+    border-radius: 15px;
+    box-shadow: 5px 6px 11px 1px #00000017;
+    opacity:0;
+    transition:all .5s;
+height:0px;
+overflow:hidden;
+    margin-top: 10px;
+}
+
+.show_it
+{
+ opacity:1!important;
+ height:auto!important;
+}
+
+
+.bell_notification:hover
+{
+	cursor:pointer;
+}
+
+
+
 
 #block-headertopbar
 {

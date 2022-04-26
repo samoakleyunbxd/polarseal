@@ -1,3 +1,19 @@
+
+/*   hide project section on profile page   */
+.profile-column.projects-list
+{
+	display:none;
+}
+/*   add extra margin after project section   */
+.profile-column 
+{
+	    margin-bottom: 70px;
+}
+
+/*   END   */
+
+
+
 #page-wrapper, #page, #header, #navbar-main
 {
 background: #f7faff;

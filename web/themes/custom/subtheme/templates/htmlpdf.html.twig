@@ -1,29 +1,21 @@
 THIS IS PDF FIKLE :)
 
+{{kint(content['#node'].id()) }}
+{{ drupal_field('field_customer_name', 'node', content['#node'].id()) }}
 
 {{ kint(node.field_customer_name[0]['x-default'][0]['value'])  }}
 {{ kint(node.field_customer_name[0])  }}
 {{ kint(node.field_customer_name[0]['value'])  }}
-
-
-
 {{ kint(node.field_customer_name['x-default'][0]['value'])  }}
 {{ kint(node.field_customer_name['x-default'][0]['value'])  }}
-
-Value: {{ content.node.field_customer_name.value  }}
-
-
+ {{ content.node.field_customer_name.value  }}
 {{ kint(content.node.entity)  }}
-
-
 {{ kint(content['node'].entity)  }}
 {{ kint(content[0].node.entity)  }}
-
 {{ kint(content.node.entity)  }}
 {{ kint(node.entity)  }}
-
 {{  kint(node.langcode) }}
 {{  kint(content.node.langcode) }}
-{{  kint(page.node.langcode) }}
+{{  kint(page['#node'].langcode) }}
 {{  kint(content.langcode) }}
-{{  kint(node.langcode) }}
+{{  node.langcode.value }}
