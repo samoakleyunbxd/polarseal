@@ -55,11 +55,13 @@ function bootstrap_barrio_subtheme_form_system_theme_settings_alter(&$form, Form
     'bg-transparent' => t('Transparent'),
   ];
 }
-
+// function bootstrap_barrio_subtheme_preprocess_blocknotifications_block_1(&$variables) {
+// die();
+// }
 
 
 function bootstrap_barrio_subtheme_preprocess_block (&$variables) {
-  $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+  $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();#
 
   // Get all Flower node IDs.
   $nids = $query->condition('type', 'article')->execute();
@@ -72,7 +74,13 @@ function bootstrap_barrio_subtheme_preprocess_block (&$variables) {
 
 
 
-
+    $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+  // Get all Flower node IDs.
+  $nids = $query->condition('type', 'notifications')->execute();
+  // Load all Flower nodes.
+  $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+  // Pass them to page.html.twig.
+  $variables['notifications_content'] = $nodes;
 
 }
 

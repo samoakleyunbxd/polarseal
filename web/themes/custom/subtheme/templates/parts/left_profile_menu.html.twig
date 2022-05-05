@@ -1,5 +1,5 @@
 
-
+{{ attach_library('bootstrap_barrio_subtheme/unbxd-left-accordion-menu') }}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
 {%  set path = path('<current>') %}
@@ -12,9 +12,6 @@
 
 
 <div class="  ">
-
-
-
 
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
@@ -29,8 +26,7 @@
 <p class=" {%  if path=="/my-documents" %}  active_submenu {% endif %}" ><a href="/my-documents"><img src="/{{ directory }}/images/icons/Documents.png" alt="{{ site_name }}">My documents</a></p>
 <p class=" {%  if path=="/my-samples" %}  active_submenu {% endif %}" ><a href="/my-samples"><img src="/{{ directory }}/images/icons/Documents.png" alt="{{ site_name }}">My samples</a></p>
 
-     
-
+    
 
       </div>
     </div>
@@ -61,103 +57,5 @@
 
 
 
-
-
-<style type="">
-
-
-.accordion-button
-{
-	color: #004c7a;
-}
-
-
-.accordion-item
-{
-
-	border:none;
-}
-
-
-.accordion-button, .accordion-item 
-{
-	background-color: #ffe4c400;
-}
-
-
-.accordion-header
-{
-
-border:none;
-}
-
-
-.accordion-button:not(.collapsed) {
-    color: #229fb1;
-    font-weight: 600;
-}
-
-
-.accordion-button:not(.collapsed) {
-    color: #004c7a;
-    background-color: #ffe4c400;
-    box-shadow: none;
-}
-
-
-
-.accordion-button:focus {
-    z-index: 3;
-    border-color: #86b7fe00;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%);
-}
-
-
-
-
-.active {
-    background: #fff!important;
-    border-radius: 13px!important;
-    -webkit-box-shadow: 0 4px 10px 0 rgb(0 0 0 / 14%)!important;
-    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 14%)!important;
-}
-
-
-
-.accordion-body {
-    padding: 1rem 1.25rem;
-    padding-top: 10px;
-}
-
-
-
-.accordion-button.active
-{
-    color: #229fb1!important;
-    font-weight: 600!important;
-}
-
-
-
-.left_profile_menu .second_nav p {
-    margin-top: 0px;
-}
-
-
-
-.accordion-button::after {
-    margin-left: 10px;
-}
-
-
-.accordion-button
-}
-    max-width: 170px;
-
-}
-
-
-</style>
 
 

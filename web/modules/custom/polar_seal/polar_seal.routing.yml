@@ -13,3 +13,10 @@ polar_seal.http_controller_fetchorders:
     _title: 'fetch'
   requirements:
     _permission: 'access content'
+polar_seal.read_notification:
+  path: '/polar_seal/read-notification/{not_id}'
+  defaults:
+    _controller: '\Drupal\polar_seal\Controller\PolarSealViewAjaxController::readNotification'
+    _title: 'fetch'
+  requirements:
+    _permission: 'access content'

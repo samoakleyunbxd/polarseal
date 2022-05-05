@@ -32,71 +32,69 @@
 <div class="profile-column">
 
 
-<div{{ attributes }}>
-  {{ title_prefix }}
+	<div{{ attributes }}>
+	  {{ title_prefix }}
 
 
-<p class="column_header">COMPANY DETAILS</p>
+	<p class="column_header">COMPANY DETAILS</p>
 
 
-{% set user = bamboo_load_currentuser() %}
-{{content.field_telephone}}
-{{field_telephone}}
+	{% set user = bamboo_load_currentuser() %}
+		{{content.field_telephone}}
+	{{field_telephone}}
 
 
-<div class="item">
-	<div style="width:100%;display: flex;">
-		<div style="width:50%">
-			<span class="label">Name</span>
-		</div>
-		<div style="width:50%">
-			<span class="data">{{ user.field_company_name.value }}</span>
-		</div>
-	</div>
-</div>
-
-
-<div class="item">
-	<div style="width:100%;display: flex;">
-		<div style="width:50%">
-			<span class="label">Address</span>
-		</div>
-		<div style="width:50%">
-			<span class="data">{{ user.field_company_address.value }}</span>
+	<div class="item">
+		<div style="width:100%;display: flex;">
+			<div style="width:50%">
+				<span class="label">Name</span>
+			</div>
+			<div style="width:50%">
+				<span class="data">{{ user.field_company_name.value }}</span>
+			</div>
 		</div>
 	</div>
-</div>
 
 
-<div class="item">
-	<div style="width:100%;display: flex;">
-		<div style="width:50%">
-			<span class="label">Email</span>
-		</div>
-		<div style="width:50%">
-			<span class="data">{{ user.field_company_email.value }}</span>
-		</div>
-	</div>
-</div>
-
-<div class="item">
-	<div style="width:100%;display: flex;">
-		<div style="width:50%">
-			<span class="label">Telephone</span>
-		</div>
-		<div style="width:50%">
-			<span class="data">{{ user.field_company_telephone.value }}</span>
+	<div class="item">
+		<div style="width:100%;display: flex;">
+			<div style="width:50%">
+				<span class="label">Address</span>
+			</div>
+			<div style="width:50%">
+				<span class="data">{{ user.field_company_address.value }}</span>
+			</div>
 		</div>
 	</div>
-</div>
 
 
+	<div class="item">
+		<div style="width:100%;display: flex;">
+			<div style="width:50%">
+				<span class="label">Email</span>
+			</div>
+			<div style="width:50%">
+				<span class="data">{{ user.field_company_email.value }}</span>
+			</div>
+		</div>
+	</div>
 
+	<div class="item">
+		<div style="width:100%;display: flex;">
+			<div style="width:50%">
+				<span class="label">Telephone</span>
+			</div>
+			<div style="width:50%">
+				<span class="data">{{ user.field_company_telephone.value }}</span>
+			</div>
+		</div>
+	</div>
 
-  
-  {% block content %}
-    {{ content }} 
-  {% endblock %}
+	  
+	  {% block content %}
+	    {{ content }} 
+	  {% endblock %}
+
 </div>
 
 

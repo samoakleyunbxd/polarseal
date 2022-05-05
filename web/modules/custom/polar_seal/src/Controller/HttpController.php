@@ -184,8 +184,8 @@ class HttpController extends ControllerBase {
         $ivsubform->save();
 
         $serialsubform->save();
-        print_r($serialsubform);
-        die();
+        // print_r($serialsubform);
+        // die();
         $par = Paragraph::create([
           'type' => 'order_items_subform',
           'field_kline' => $obj->KLINE,

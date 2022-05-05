@@ -68,7 +68,8 @@
  */
 #}
 {{ attach_library('bootstrap_barrio_subtheme/unbxd-styling-article-slider') }}
-{{ attach_library('bootstrap_barrio_subtheme/unbxd-order-table') }}
+{{ attach_library('bootstrap_barrio_subtheme/unbxd-styling-unbxd-order-table') }}
+
 
 
 <div id="page-wrapper">
@@ -344,29 +345,28 @@ loop_it();
 
 
 
-<style type="">
-
+<style type="text/css">
 
 
 table tr
 {
-	transform: translateX(-200px);
-	opacity:0;
-	transition:all .5s;
+  transform: translateX(-200px);
+  opacity:0;
+  transition:all .5s;
 
 }
 
 .show_tr
 {
 
-	opacity:1;
-		transform: translateX(0px)!important;
+  opacity:1;
+    transform: translateX(0px)!important;
 }
 
 
 .go_to
 {
-	
+  
     position: absolute;
     right: 14px;
     content: "";
@@ -383,7 +383,7 @@ transition:all .5s;
 
 .go_to:hover
 {
-	transform:scale(1.2);
+  transform:scale(1.2);
 }
 
 
@@ -392,7 +392,7 @@ transition:all .5s;
 
 .projects-list.orders .node--view-mode-teaser::after
 {
-	display:none;
+  display:none;
 }
 
 
@@ -418,10 +418,6 @@ display:none!important;
 
 
 
-.view-order-list
-{
-
-}
 
 .view-order-list .node--type-orders
 {
@@ -429,16 +425,6 @@ display:none!important;
   box-shadow: 0 0 22px 0 rgba(0,0,0,0.13);
   border-radius:10px;
 }
-
-
-
-
-
-
-    background-color: #79bc38;
-    background-color: #ff9700;
-    background-color: #f40000;
-    background-color: #ff9700;
 
 
 
@@ -501,7 +487,7 @@ display:none;
 
 .orders  table tr, .orders  table td
 {
-	border:none;
+  border:none;
 }
 
 
@@ -509,15 +495,15 @@ display:none;
 
 .orders  table
 {
-	   border-collapse:separate;
+     border-collapse:separate;
                 border-spacing:0 15px;
 }
 
 
 .orders  table tr
 {
-	    background: white;
-	    border-radius:10px;
+      background: white;
+      border-radius:10px;
 }
 
 
@@ -539,10 +525,10 @@ width: 16px;
 background-color: #79bc38;
 }
 .orange{
-	background-color: #ff9700;
+  background-color: #ff9700;
 }
 .red{
-	background-color:  #f40000;
+  background-color:  #f40000;
 }
 
 .orders  tr td, .orders  tr th {
@@ -583,13 +569,7 @@ td:first-child { border-top-left-radius: 10px; }
  td:last-child { border-top-right-radius: 10px; }
 td:first-child { border-bottom-left-radius: 10px; }
 td:last-child { border-bottom-right-radius: 10px; }
-
-
-
 </style>
-
-
-
 
 
 

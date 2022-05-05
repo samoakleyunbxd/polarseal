@@ -66,8 +66,11 @@
         "drupal/twig_tweak": "^3.1",
         "drupal/typed_data": "1.x-dev",
         "drupal/update_premium": "^1.7",
+        "drupal/user_field_value": "^1.1",
         "drupal/views_ajax_get": "^2.0",
+        "drupal/views_argument_token": "^2.0",
         "drupal/views_bootstrap": "^4.3",
+        "drupal/views_infinite_scroll": "^2.0",
         "drush/drush": "^11.0",
         "softcreatr/jsonpath": "^0.5 || ^0.7 || ^0.8"
     },

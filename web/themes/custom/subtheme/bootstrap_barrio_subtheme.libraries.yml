@@ -47,6 +47,13 @@ unbxd-styling-single-order:
     theme:
       css/unbxd/single-order.css: {}
 
+unbxd-left-accordion-menu:
+  css:
+    theme:
+      css/unbxd/unbxd-left-accordion-menu.css: {}
+
+      
+
 bootstrap:
   js:
     /libraries/popper.js/dist/umd/popper.min.js: { weight: -49 }

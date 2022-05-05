@@ -3,6 +3,8 @@
 {
         height: auto;
         background-image:none;
+            margin-top: 60px;
+              margin-bottom: 60px;
 }
 
 h3
@@ -10,6 +12,35 @@ h3
     color:#004C7A;
 }
 
+
+
+
+
+.right_column .view-content.row {
+    margin-top: 60px;
+    max-width: 245px;
+    margin-left: AUTO;
+    margin-right: auto;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+     scroll-behavior: smooth;
+}
+
+
+
+
+
+.right_column .view-content.row::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.right_column .view-content.row {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 
 .profile-column
 {
@@ -160,7 +191,7 @@ h3
             margin-bottom: 20px;
             padding-left: 30px;
             position: relative;
-            height:50px;
+            height:auto;
         }
 
 
@@ -190,32 +221,10 @@ h3
 
 
 
-        .views-row::before
-        {
-            position: absolute;
-            left: 7px;
-            content: "";
-            display: block;
-            background-image: url(/themes/custom/subtheme/images/icons/bell_icon.png);
-            width: 16px;
-            height: 20px;
-            background-size: contain;
-            top: 14px;
-        }
 
 
-        .views-row::after
-        {
-            position: absolute;
-            right: 14px;
-            content: "";
-            display: block;
-            background-image: url(/themes/custom/subtheme/images/icons/right_arrow.png);
-            width: 23px;
-            height: 23px;
-            background-size: contain;
-            top: 14px;
-        }
+
+
 
 
 }
@@ -225,7 +234,92 @@ h3
 
 
 
-.block-views-blocknotifications-block-1.profile-column.right_column::after
+
+
+
+
+
+
+.view-notifications
+{
+	
+.not-date
+{
+	color: #898989;
+}
+
+
+
+.views-field-nothing
+{
+	    position: relative;
+
+
+
+}
+
+
+
+
+
+.not-right
+{
+	    color: #898989;
+    background: white;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+        height: 0px;
+    overflow: hidden;
+    padding: 0px;
+    transition:all .5s;
+}
+
+
+.show_notification
+{
+	height: auto!important;
+    padding: 10px!important;
+
+    margin-left: -15px;
+    border-top: 1px solid #dedede;
+
+
+}
+
+
+
+
+
+
+
+
+.notification_arrow {
+    position: absolute;
+    right: 14px;
+    content: "";
+    display: block;
+    background-image: url(/themes/custom/subtheme/images/icons/right_arrow.png);
+    width: 23px;
+    height: 23px;
+    background-size: contain;
+    top: 14px;
+}
+
+.notification_arrow:hover
+{
+	cursor:pointer;
+}
+
+
+
+
+}
+
+
+
+
+.scroll_notifications
 {
     position: absolute;
     left: 7px;
@@ -237,16 +331,16 @@ h3
     background-size: cover;
     bottom: -10px;
     left: 50%;
-transform:translateX(-50%);
-
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 
 
-
-
-
-
+.scroll_notifications:hover
+{
+cursor:pointer;
+}
 
 
 .profile-column.right_column p, .profile-column.right_column span
@@ -991,3 +1085,9 @@ position: absolute;
 
 
 /* PROJECT SECTION END */
+
+
+.right_column .views-row::after
+{
+	display:none!important;
+}

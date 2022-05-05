@@ -93,10 +93,6 @@ const myChart = new Chart(ctx, {
 {{ drupal_view('projects_list', 'block_1') }}
 
 
-
-
-
-
 </div>
 
 
@@ -133,19 +129,10 @@ jQuery('.projects-list').append('<h3>You have no project running</h3>');
   ]
 
 
-
-
   });
 
 
 });
-
-
-
-
-
-
-
 
 
 
@@ -156,50 +143,42 @@ jQuery('.projects-list').append('<h3>You have no project running</h3>');
 <div class="profile-column articles"> 
 
 
-<div class="centered">
-	<h2>NEWS AND RELEASES</h2>
- </div>
+            <div class="centered">
+            	<h2>NEWS AND RELEASES</h2>
+             </div>
 
 
-<div id="article_slider">
+            <div id="article_slider">
 
 
-{% for article in articles %} 
+                {% for article in articles %} 
 
-<div class="article_item"> 
+                    <div class="article_item"> 
 
-<a href="{{ path('entity.node.canonical', {'node':  article.nid.value}) }}">
-{{ drupal_image(article.field_image.target_id,'medium') }}
-</a>
-
-
-<div class="article_info profile-column">
-<a href="{{ path('entity.node.canonical', {'node':  article.nid.value}) }}"><span class="article_title">{{article.title.value | raw}}</span></a>
-<span class="article_body">{{article.body.value | raw}}</span>
-<p><span class="article_date">{{ article.revision_timestamp.value|date('F d,Y') }}</span></p>
-
-<div class="link_to">
-<a href="{{ path('entity.node.canonical', {'node':  article.nid.value}) }}">
-link
-</a>
-</div>
-
-</div>
+                            <a href="{{ path('entity.node.canonical', {'node':  article.nid.value}) }}">
+                            {{ drupal_image(article.field_image.target_id,'medium') }}
+                            </a>
 
 
+                            <div class="article_info profile-column">
+                                    <a href="{{ path('entity.node.canonical', {'node':  article.nid.value}) }}"><span class="article_title">{{article.title.value | raw}}</span></a>
+                                    <span class="article_body">{{article.body.value | raw}}</span>
+                                    <p><span class="article_date">{{ article.revision_timestamp.value|date('F d,Y') }}</span></p>
 
-</div>
+                                    <div class="link_to">
+                                        <a href="{{ path('entity.node.canonical', {'node':  article.nid.value}) }}">
+                                        link
+                                        </a>
+                                    </div>
+
+                            </div>
+
+                    </div>
+
+                {% endfor %}
 
 
-{% endfor %}
-
-
-
-
-</div>
-
-
-
+            </div>
 
 
 

@@ -46,13 +46,9 @@
 <input class="submit_img" type="image" src="/{{ directory }}/images/icons/search.png" alt="Submit Form" />
 </div>
 </form>
-<div class="round_icon bell_notification" onclick='toggle_notification()'><img src="/{{ directory }}/images/icons/bell_icon.png" alt="{{ site_name }}">
-<div id="header_notification">
-
-{{  drupal_view('notifications', 'block_1') }} 
+<div class="round_icon bell_notification" ><a href="/user/{{user2.uid.value}}#notifications"><img src="/{{ directory }}/images/icons/bell_icon.png" alt="{{ site_name }}"></a>
 </div>
-</div>
-<div class="round_icon"><img class="profile_img" width="85" src="{{ file_url(user2.user_picture.entity.uri.value) }}"></div>
+<div class="round_icon profile"><a href="/"><img class="profile_img" width="85" src="{{ file_url(user2.user_picture.entity.uri.value) }}"></a></div>
 <div class="round_icon"><a href="/user/logout"><img src="/{{ directory }}/images/icons/exit_icon.png" alt="{{ site_name }}"></a></div>
 </div>
 
@@ -88,7 +84,10 @@ jQuery('#header_notification').toggleClass('show_it');
 	display:none;
 }
 
-
+.round_icon.profile:hover
+{
+	cursor:pointer;
+}
 
 
 #header_notification 

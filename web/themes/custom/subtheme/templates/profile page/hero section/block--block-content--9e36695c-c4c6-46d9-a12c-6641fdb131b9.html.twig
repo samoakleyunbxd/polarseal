@@ -32,40 +32,24 @@
 
 {% set user2 = bamboo_load_currentuser() %}
 
-
-
-
-
-
-
 <div class="profile_hero_section" {{ attributes }}>
+	<div class="top_bck_image">
+
+		<a class="edit_profile" href="/user/{{ user2.uid.value }}/edit"><img class="" src="/themes/custom/subtheme/images/icons/pencil_icon.png"></a>
+
+	</div>
+	<div class="profile_img">
+		<img width="85" src="{{ file_url(user2.user_picture.entity.uri.value) }}">
+	</div>
+	<div class="profile_info">
+		<h2>MY ACCOUNT</h2>
+	</div>
+	<p>Welcome back to your PolarSeal account <span style="text-transform: capitalize;">{{ user2.name.value }}!</span></p>
 
 
-<div class="top_bck_image">
-
-<a class="edit_profile" href="/user/{{ user2.uid.value }}/edit"><img class="" src="/themes/custom/subtheme/images/icons/pencil_icon.png"></a>
-
-
-
-</div>
-<div class="profile_img"><img width="85" src="{{ file_url(user2.user_picture.entity.uri.value) }}"></div>
-<div class="profile_info"><h2>MY ACCOUNT</h2></div>
-<p>Welcome back to your PolarSeal account <span style="text-transform: capitalize;">{{ user2.name.value }}!</span></p>
-
-
-
-
-
-
-
-
-
-
-
-  
-  {% block content %}
-    {{ content }} 
-  {% endblock %}
+	  {% block content %}
+	    {{ content }} 
+	  {% endblock %}
 </div>
 
 
