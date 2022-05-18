@@ -33,52 +33,10 @@
 
 {{ attach_library('bootstrap_barrio_subtheme/unbxd-styling-article-slider') }}
 <div class="profile-column profile-chart">
-
-<canvas id="myChart" width="400" height="400"></canvas>
-<script>
-const ctx = document.getElementById('myChart');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels : ['Jan', 'Feb', 'Mar', 'April','May','June','July','Aug','Sept','Oct','Nov','Dec'],
-        datasets: [{
-            label: 'GBP Spent',
-            data: [0,5000,10000,15000,20000,22000,18000,12000,8000,11500,500,0],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-</script>
-<script>
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
-</script>
- 
+    <div id="search_graph_div" style="display:flex;position: absolute;top: 33px;right: 32px;align-items: center;"><span style="display:inline-block;margin-right:5px;margin-left:5px;color:#004c7a;">From</span> <input id="fromdate" type="date" placeholder="From"><span style="display:inline-block;margin-right:5px;margin-left:5px;color:#004c7a"> To </span><input id="todate" type="date" placeholder="To"><button id="showbutton" style=" background: #004c7a; color: white; border-color: #004c7a; border-radius: 5px; margin-left: 5px;}">Show</button></div>
+ <div id="chartWrapper">
+  <canvas id="myChart" width="400" height="200"></canvas>
+ </div>
 
 
 
@@ -100,11 +58,76 @@ const myChart = new Chart(ctx, {
 
 
 <script type="text/javascript">
-
-
+function formatDate(date) {
+    var d = new Date(date),
+        month = (d.getMonth() + 1),
+        day = d.getDate(),
+        year = d.getFullYear();
+  
+    return [day, month, year].join('-');
+}
+function getToday() {
+  var today = new Date();
+  today.setDate('01');
+  var enddate = today.toISOString().split('T')[0];
+  var oneYr = new Date();
+  oneYr.setDate('01');
+  oneYr.setYear(today.getFullYear() -5);
+  var startdate = oneYr.toISOString().split('T')[0];
+  return [startdate,enddate];
+}
 //check how many project exist (based on generated column)
 document.addEventListener("DOMContentLoaded", function(event) {
-
+  jQuery("#showbutton").click(function() {
+    updateGraph(jQuery('#fromdate').val(),jQuery('#todate').val());
+  });
+var datearr = getToday();
+jQuery('#fromdate').val(datearr[0]);
+jQuery('#todate').val(datearr[1]);
+updateGraph(datearr[0],datearr[1]);
+function updateGraph(from,to) {
+  jQuery('#myChart').remove();
+  jQuery('#chartWrapper').append('<canvas id="myChart" width="400" height="200"></canvas>');
+  jQuery.get('/polar_seal/gen-chart/'+from+'/'+to,function(data) {
+  console.log(data);
+  const ctx = document.getElementById('myChart');
+  const labels = [];
+  const colors = [];
+  const values = [];
+  for (const [key, value] of Object.entries(data.data)) {
+   labels.push(key);
+   values.push(value);
+   colors.push('rgba(75, 120, 250, 0.2)');
+  }
+  console.log(labels);
+  console.log(values);
+  console.log(colors);
+const myChartvar = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels : labels,
+        datasets: [{
+            label: 'GBP Spent',
+            data: values,
+            backgroundColor: colors,
+            borderColor: colors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+ myChartvar = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+});
+}
 
 var number = jQuery('.view-projects-list').find('.views-col').length;
 
@@ -188,6 +211,15 @@ jQuery('.projects-list').append('<h3>You have no project running</h3>');
 
 
 
+
+
+<style type="text/css">
+
+
+
+
+
+</style>
 
 
 

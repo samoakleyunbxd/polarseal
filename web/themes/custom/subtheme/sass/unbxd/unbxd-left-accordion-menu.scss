@@ -89,3 +89,20 @@ border:none;
 
 }
 
+.accordion-button:not(.collapsed)::after {
+    filter: saturate(0);
+}
+
+
+
+
+
+@media(max-width:1200px)
+{
+    
+
+.left_profile_menu .second_nav {
+    padding-left: 18px!important;
+}
+    
+}

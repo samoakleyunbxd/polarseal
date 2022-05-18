@@ -205,10 +205,7 @@ h3
             text-decoration:none;
         }
 
-        .views-exposed-form
-        {
-            display:none;
-        }
+    
 
         .view-content.row
         {
@@ -283,6 +280,7 @@ h3
 
     margin-left: -15px;
     border-top: 1px solid #dedede;
+    padding-right:0px!important;
 
 
 }
@@ -319,16 +317,16 @@ h3
 
 
 
-.scroll_notifications
-{
+.scroll_notifications {
     position: absolute;
     left: 7px;
     content: "";
     display: block;
     background-image: url(/themes/custom/subtheme/images/icons/arrow-3.png);
-    width: 35px;
-    height: 35px;
-    background-size: cover;
+    width: 37px;
+    height: 36px;
+    background-size: contain;
+    background-repeat: no-repeat;
     bottom: -10px;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -677,8 +675,8 @@ p
     background: #004c7a;
     color: #fff;
     position: absolute;
-    right: -58px;
-     top: 180px;
+    right: -53px;
+     top: 191px;
     padding: 5px;
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
@@ -954,7 +952,7 @@ color:white;
  .follow_wrapper
 {
       position: relative;
-    z-index: 10;
+    z-index: 1;
     display: block;
     cursor: pointer;
 }
@@ -1091,3 +1089,73 @@ position: absolute;
 {
 	display:none!important;
 }
+
+
+.profile-column.right_column h2
+{
+	text-align: right;
+
+}
+
+
+
+
+
+
+@media(max-width:1300px)
+{
+	
+
+.profile-column.profile-chart {
+
+    padding-top: 70px;
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+@media(max-width:999px)
+{
+	
+
+.profile-column.profile-chart {
+
+    padding-top: 70px;
+}
+
+
+
+#showbutton
+{
+
+    margin: auto;
+    text-align: center;
+    width: 100px;
+    display: block;
+    margin-top: 20px;
+        margin-left: auto!important;
+}
+
+
+
+#search_graph_div
+{
+	    display: block!important;
+    right: auto!important;
+    top: -31px!important;
+    align-items: center;
+    margin-left: -16px!important;
+    position:relative!important;
+}
+
+
+}
+

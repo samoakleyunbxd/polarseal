@@ -177,14 +177,14 @@
 
 <div class="row order-details"> 
 
-      <div class="col-md-6 col-2"> 
+      <div class="col-md-6 col-sm-12"> 
 
               <div><span class="order_nr">Client order number</span></div>
               <div><span class="info">{{node.title.value  }}</span></div>
 
       </div>
 
-      <div class="col-md-6 col-2"> 
+      <div class="col-md-6 col-sm-12"> 
 
               <div><span class="order_nr">Polar Seals</span></div>
               <div><span class="info">???</span></div>
@@ -196,14 +196,14 @@
 
 <div class="row order-details"> 
 
-      <div class="col-md-6 col-2"> 
+      <div class="col-md-6 col-sm-12"> 
 
               <div><span class="order_nr">ShippingAddress</span></div>
               <div><span class="info">???</span></div>
 
       </div>
 
-      <div class="col-md-6 col-2"> 
+      <div class="col-md-6 col-sm-12"> 
 
               <div><span class="order_nr">Billing Address</span></div>
               <div><span class="info">???</span></div>
@@ -269,6 +269,59 @@
 
 
 
+<div id="row_{{loop.index}}" style="    padding: 20px;" class="hide_desktop"> 
+
+<div class="row">
+<div class="col-sm-6"><p><strong>Item</strong></p></div>
+<div class="col-sm-6"><p>{{loop.index}}</p></div>
+</div>
+<div class="row">
+<div class="col-sm-6"><p><strong>Part No.</strong></p></div>
+<div class="col-sm-6"><p>{{item.entity.field_part_name.value }}</p></div>
+</div>
+<div class="row">
+<div class="col-sm-6"><p><strong>Description</strong></p></div>
+<div class="col-sm-6"><p>{{ item.entity.field_part_description.value }}</p></div>
+</div>
+<div class="row">
+<div class="col-sm-6"><p><strong>Price Per Part</strong></p></div>
+<div class="col-sm-6"><p>???</p></div>
+</div>
+<div class="row">
+<div class="col-sm-6"><p><strong>Quantity</strong></p></div>
+<div class="col-sm-6"><p>{{ item.entity.field_t_quant.value }}</p></div>
+</div>
+<div class="row">
+<div class="col-sm-6"><p><strong>Price</strong></p></div>
+<div class="col-sm-6"><p>???</p></div>
+</div>
+
+{% if (loop.index==1) %}
+<div class="row">
+<div class="col-sm-6"><p><strong>Details</strong></p></div>
+<div class="col-sm-6"><p><img width="30" src="/themes/custom/subtheme/images/icons/right_arrow.png"  onclick="show_data(1)" ></p></div>
+</div>
+{% endif %}
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <tr class="heading_info" id="row_{{loop.index}}">
 <td>{{loop.index}} </td>
 <td> {{item.entity.field_part_name.value }}</td>
@@ -293,7 +346,7 @@
     
 
 
-          <div class="shippment_info">
+          <div class="shippment_info hide_mobile">
             <div style="width: 150px;">Shipment {{loop.index}} of {{  node.field_order_items_subform | length  }}</div>
             <div style="width: 150px;">{{item.entity.field_part_name.value }}</div>
             <div style="width: 150px;">Actual Ship Date: <br>???</div>
@@ -301,6 +354,54 @@
             <div style="width: 150px;">Invoice:  <br>{{ item.entity.field_orderitemsiv_subform.entity.field_ivnum.value }}</div>
             <div style="width: 150px;">Delivery Note:  <br>{{ item.entity.field_orderitemstrans_subform.entity.field_zpls_ship_to.value }}</div>
           </div>
+
+
+
+
+     <div class="shippment_info hide_desktop">
+
+
+
+<div class="row">
+<div class="col-sm-6">
+
+         <div style="width: 150px;"><strong>Shipment {{loop.index}} of {{  node.field_order_items_subform | length  }}</strong></div>
+            <div style="width: 150px;"><strong>Part name: </strong><br>{{item.entity.field_part_name.value }}</div>
+            <div style="width: 150px;"><strong>Actual Ship Date: </strong><br>???</div>
+
+</div>
+
+
+
+<div class="col-sm-6">
+     <div style="width: 150px;"><strong>Estimated Delivery Date: </strong><br>{{ item.entity.field_orderitemstrans_subform.entity.field_cur_date.value }}</div>
+            <div style="width: 150px;"><strong>Invoice:  </strong><br>{{ item.entity.field_orderitemsiv_subform.entity.field_ivnum.value }}</div>
+            <div style="width: 150px;"><strong>Delivery Note:  </strong><br>{{ item.entity.field_orderitemstrans_subform.entity.field_zpls_ship_to.value }}</div>
+
+  
+
+</div>
+
+
+
+
+
+     
+       
+
+
+          </div>
+
+
+</div>
+
+
+
+
+
+
+
+
 
 
 
@@ -312,12 +413,39 @@
 
         <table>
 
+     
+
         <tr class="track_info">
-              <td><span class="round_dot_outer left"></span><span class="round_dot left"></span></td>
-              <td><span class="round_dot_outer"></span><span class="round_dot"></span></td>
-              <td><span class="round_dot_outer"></span><span class="round_dot"></span></td>
-              <td><span class="round_dot_outer"></span><span class="round_dot"></span></td>
-              <td><span class="round_dot_outer last"></span><span class="round_dot last"></span></td>
+   
+
+          {% if item.entity.field_orderitemstrans_subform.entity.field_t_type.value=="D" %}
+              <td><span class="round_dot_outer left "></span><span class="round_dot left done "></span></td>
+              <td><span class="round_dot_outer"></span><span class="round_dot done"></span></td>
+              <td><span class="round_dot_outer"></span><span class="round_dot done"></span></td>
+              <td><span class="round_dot_outer"></span><span class="round_dot done"></span></td>
+              <td><span class="round_dot_outer last"></span><span class="round_dot last done"></span></td>
+
+          {% elseif item.entity.field_orderitemstrans_subform.entity.field_t_type.value=="A" %}
+
+            <td><span class="round_dot_outer left "></span><span class="round_dot left  done"></span></td>
+              <td><span class="round_dot_outer"></span><span class="round_dot "></span></td>
+              <td><span class="round_dot_outer"></span><span class="round_dot "></span></td>
+              <td><span class="round_dot_outer"></span><span class="round_dot "></span></td>
+              <td><span class="round_dot_outer last"></span><span class="round_dot last "></span></td>
+
+        {% else %}
+
+            <td><span class="round_dot_outer left "></span><span class="round_dot left  "></span></td>
+              <td><span class="round_dot_outer"></span><span class="round_dot "></span></td>
+              <td><span class="round_dot_outer"></span><span class="round_dot "></span></td>
+              <td><span class="round_dot_outer"></span><span class="round_dot "></span></td>
+              <td><span class="round_dot_outer last"></span><span class="round_dot last "></span></td>
+
+
+         {% endif %}
+
+
+      
         </tr>
 
         <tr  class="track_info">
@@ -562,6 +690,23 @@ cursor:pointer;
   transition:all .5s;
   height:0px;
 }
+
+
+.col-sm-6
+{
+  width:50%;
+}
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
 

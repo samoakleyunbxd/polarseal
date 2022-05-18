@@ -72,7 +72,7 @@ parameters:
     #
     # Enabling Twig debugging is not recommended in production environments.
     # @default false
-    debug: true
+    debug: false
     # Twig auto-reload:
     #
     # Automatically recompile Twig templates whenever the source code changes.
@@ -92,8 +92,8 @@ parameters:
     #
     # Disabling the Twig cache is not recommended in production environments.
     # @default true
-    cache: true
-  renderer.config:
+    cache: false
+  renderer.config: 
     # Renderer required cache contexts:
     #
     # The Renderer will automatically associate these cache contexts with every

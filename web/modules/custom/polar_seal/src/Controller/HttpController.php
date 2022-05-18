@@ -7,6 +7,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use GuzzleHttp\Client;
 use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItem;
+use Drupal\datetime\Plugin\Field\FieldFormatter\DateTimeCustomFormatter;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
+use Drupal\datetime_range\DateTimeRangeTrait;  
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 /**
  * Class HttpController.
  */
@@ -29,7 +36,8 @@ class HttpController extends ControllerBase {
 
   public function fetch() {
     //make request
-    $request = $this->httpClient->request('GET', 'https://Dokka:Nightmare!@test-priority.polarseal.net/odata/Priority/tabula.ini/test/ORDERS?$filter=CUSTNAME%20eq%20%27C-WHI1%27&$select=CUSTNAME,%20CDES,%20ORDNAME,%20DISPRICE,%20CODE,%20REFERENCE&$expand=ORDERITEMS_SUBFORM($select=KLINE,%20PARTNAME,%20PDES,TQUANT,%20TBALANCE;$expand=ORDSERIALORDI_SUBFORM($select=SERIALNAME,ZPLS_SERIALSTATUSDES,%20ZPLS_ACTNAME),ORDERITEMSIV_SUBFORM($select=IVNUM),ORDERITEMSTRANS_SUBFORM($select=CURDATE,%20DOC,KLINE,DOCNO,TTYPE,ZPLS_SHIPPERDES,ZPLS_AIRWAYBILL;$expand=ZPLS_SHIPTO_SUBFORM($select=ADDRESS,ADDRESS2,ADDRESS3,STATE,STATENAME,ZIP,COUNTRYNAME)))');
+   // $request = $this->httpClient->request('GET', 'https://Dokka:Nightmare!@test-priority.polarseal.net/odata/Priority/tabula.ini/test/ORDERS?$filter=CUSTNAME%20eq%20%27C-WHI1%27&$select=CUSTNAME,%20CDES,%20ORDNAME,%20DISPRICE,%20CODE,%20REFERENCE&$expand=ORDERITEMS_SUBFORM($select=KLINE,%20PARTNAME,%20PDES,TQUANT,%20TBALANCE;$expand=ORDSERIALORDI_SUBFORM($select=SERIALNAME,ZPLS_SERIALSTATUSDES,%20ZPLS_ACTNAME),ORDERITEMSIV_SUBFORM($select=IVNUM),ORDERITEMSTRANS_SUBFORM($select=CURDATE,%20DOC,KLINE,DOCNO,TTYPE,ZPLS_SHIPPERDES,ZPLS_AIRWAYBILL;$expand=ZPLS_SHIPTO_SUBFORM($select=ADDRESS,ADDRESS2,ADDRESS3,STATE,STATENAME,ZIP,COUNTRYNAME)))');
+    $request = $this->httpClient->request('GET', 'https://Dokka:Nightmare!@test-priority.polarseal.net/odata/Priority/tabula.ini/test/ORDERS?$select=CUSTNAME,%20CDES,%20ORDNAME,%20DISPRICE,%20CODE,%20REFERENCE&$expand=ORDERITEMS_SUBFORM($select=KLINE,%20PARTNAME,%20PDES,TQUANT,%20TBALANCE;$expand=ORDSERIALORDI_SUBFORM($select=SERIALNAME,ZPLS_SERIALSTATUSDES,%20ZPLS_ACTNAME),ORDERITEMSIV_SUBFORM($select=IVNUM),ORDERITEMSTRANS_SUBFORM($select=CURDATE,%20DOC,KLINE,DOCNO,TTYPE,ZPLS_SHIPPERDES,ZPLS_AIRWAYBILL;$expand=ZPLS_SHIPTO_SUBFORM($select=ADDRESS,ADDRESS2,ADDRESS3,STATE,STATENAME,ZIP,COUNTRYNAME)))');
     //parse results
     $posts = $request->getBody()->getContents();
     echo "<pre>"; //display php in nice format if we need
@@ -54,73 +62,99 @@ class HttpController extends ControllerBase {
   protected function createOrder($val) { //new order
     $orderitemssubform = array();
     foreach ($val->ORDERITEMS_SUBFORM as $key=>$obj) {
-      $address = $obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->ADDRESS."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->ADDRESS2."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->ADDRESS3."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->STATE."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->STATENAME."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->ZIP."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->COUNTRYNAME;
-      $transsubform = Paragraph::create([
-        'type' => 'orderitemstrans_subform',
-        'field_cur_date' => array(
-          'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->CURDATE,
-        ),
-        'field_doc' => array(
-          'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->DOC,
-        ),
-        'field_kline' => array(
-          'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->KLINE,
-        ),
-        'field_doc_no' => array(
-          'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->DOCNO,
-        ),
-        'field_t_type' => array(
-          'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->TTYPE,
-        ),
-        'field_zpls_shipperdes' => array(
-          'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPPERDES,
-        ),
-        'field_zpls_airwaybill' => array(
-          'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_AIRWAYBILL,
-        ),
-        'field_zpls_ship_to' => array(
-          'value'  =>  $address
-        ),
-        
-      ]);
-      $ivsubform = Paragraph::create([
-        'type' => 'ordserialordi_subform',
-      ]);
-      $ivsubform->save();
-      $serialsubform = Paragraph::create([
-        'type' => 'orderitemsiv_subform',
-        'field_ivnum' => array(
-          'value'  =>  $obj->ORDSERIALORDI_SUBFORM[0]->IVNUM,
-        ),
-      ]);
-      $serialsubform->save();
-      $orderitemssubform[] = Paragraph::create([
+      $transarr = array();
+      foreach ($obj->ORDERITEMSTRANS_SUBFORM as $val) {
+        $address = $val->ZPLS_SHIPTO_SUBFORM->ADDRESS."\n".$val->ZPLS_SHIPTO_SUBFORM->ADDRESS2."\n".$val->ZPLS_SHIPTO_SUBFORM->ADDRESS3."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->STATE."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->STATENAME."\n".$val->ZPLS_SHIPTO_SUBFORM->ZIP."\n".$val->ZPLS_SHIPTO_SUBFORM->COUNTRYNAME;
+
+        $transsubform = Paragraph::create([
+          'type' => 'orderitemstrans_subform',
+          'field_cur_date' => array(
+            'value'  =>  $val->CURDATE,
+          ),
+          'field_doc' => array(
+            'value'  =>  $val->DOC,
+          ),
+          'field_kline' => array(
+            'value'  =>  $val->KLINE,
+          ),
+          'field_doc_no' => array(
+            'value'  =>  $val->DOCNO,
+          ),
+          'field_t_type' => array(
+            'value'  =>  $val->TTYPE,
+          ),
+          'field_zpls_shipperdes' => array(
+            'value'  =>  $val->ZPLS_SHIPPERDES,
+          ),
+          'field_zpls_airwaybill' => array(
+            'value'  =>  $val->ZPLS_AIRWAYBILL,
+          ),
+          'field_zpls_ship_to' => array(
+            'value'  =>  $address
+          ),
+          
+        ]);
+        $transsubform->save();
+
+         $transarr[] = array(
+          'target_id' => $transsubform->id(),
+          'target_revision_id' => $transsubform->getRevisionId(),
+         );
+      }
+      $ivarr = array();
+      foreach ($obj->ORDERITEMSIV_SUBFORM as $val) {
+          $ivsubform = Paragraph::create([
+          'type' => 'orderitemsiv_subform',
+          'field_ivnum' => array(
+            'value'  =>  $val->IVNUM,
+          ),
+        ]);
+        $ivsubform->save();
+        $ivarr[] = array(
+          'target_id' => $ivsubform->id(),
+          'target_revision_id' => $ivsubform->getRevisionId(),
+        );
+      }
+      $serialarr = array();
+      foreach ($obj->ORDSERIALORDI_SUBFORM as $val) {
+        $serialsubform = Paragraph::create([
+          'type' => 'ordserialordi_subform',
+          'field_serial_name' => array(
+            'value'  =>  $val->SERIALNAME,
+          ),
+          'field_zpls_actname' => array(
+            'value'  =>  $val->ZPLS_ACTNAME,
+          ),
+          'field_zpls_serialstatusdes' => array(
+            'value'  =>  $val->ZPLS_SERIALSTATUSDES,
+          ),
+        ]);
+        $serialsubform->save();
+        $serialarr[] = array(
+          'target_id' => $serialsubform->id(),
+          'target_revision_id' => $serialsubform->getRevisionId(),
+        );
+      }
+      $orderpar = Paragraph::create([
         'type' => 'order_items_subform',
         'field_kline' => $obj->KLINE,
           'field_part_name'=> $obj->PARTNAME,
           'field_part_description' => $obj->PDES,
           'field_t_quant' => $obj->TQUANT,
           'field_t_balance' => $obj->TBALANCE,
-        'field_orderitemstrans_subform' => array(
-          'target_id' => $transsubform->id(),
-          'target_revision_id' => $transsubform->getRevisionId(),
-        ),
-        'field_orderitemsiv_subform' => array(
-          'target_id' => $ivsubform->id(),
-          'target_revision_id' => $ivsubform->getRevisionId(),
-        ),
-        'field_ordserialordi_subform' => array(
-          'target_id' => $serialsubform->id(),
-          'target_revision_id' => $serialsubform->getRevisionId(),
-        )
+        'field_orderitemstrans_subform' => $transarr,
+        'field_orderitemsiv_subform' => $ivarr,
+        'field_ordserialordi_subform' => $serialarr,
       ]);
+      $orderpar->save();
+      $orderitemssubform[] = $orderpar;
     }
-   foreach ($orderitemssubform as $key=>$obj) {
-    $pararr[] = array(
-      'target_id' => $obj->id(),
-      'target_revision_id' => $obj->getRevisionId(),
-    );
-   }
+    foreach ($orderitemssubform as $key=>$obj) {
+      $pararr[] = array(
+        'target_id' => $obj->id(),
+        'target_revision_id' => $obj->getRevisionId(),
+      );
+     }
   //  $imageparagraph = 
   //  $imageparagraph->save();
     $newOrder = Node::create(['type' => 'orders']); //create empty node object of type orders
@@ -136,83 +170,146 @@ class HttpController extends ControllerBase {
     $newOrder->save(); //save
     return true;
   }
+  protected function importUsers() {
+    $row = 1;
+    if (($handle = fopen("users.csv", "r")) !== FALSE) {
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            $num = count($data);
+            echo "<p> $num fields in line $row: <br /></p>\n";
+            $row++;
+            for ($c=0; $c < $num; $c++) {
+                echo $data[$c] . "<br />\n";
+            }
+        }
+        fclose($handle);
+    }
+  }
+  function genSalesChart($from,$to) { //generate chart variables
+    //typical date here is 01-2022 so parse accordingly
+    //echo $to;
+    $startdate = DrupalDateTime::createFromTimestamp(strtotime($from));
+    $startdate->setTimezone(new \DateTimezone(\Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface::STORAGE_TIMEZONE));
+    $startformatted = $startdate->format(\Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+    //bunch of drupal stuff to get right format
+    $enddate = DrupalDateTime::createFromTimestamp(strtotime($to));
+    $enddate->setTimezone(new \DateTimezone(\Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface::STORAGE_TIMEZONE));
+    $endformatted = $enddate->format(\Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'invoice')
+      ->condition('field_invoice_date', $startformatted, '>=')
+      ->condition('field_invoice_date', $endformatted, '<=')
+      ->sort('field_invoice_date' , 'ASC'); 
+    $results = $query->execute();
+    $values = array();
+    foreach ($results as $nid) {
+      $node = Node::load($nid);
+     // echo round($node->field_total_price->value,2);
+     // echo "<br />";
+      $values[date("m-Y",strtotime($node->field_invoice_date->value))] += $node->field_total_price->value;
+    }
+    foreach ($values as &$val) {
+      $val = money_format('%(#10n',$val);
+    }
+    return new JsonResponse([ 'data' => $values, 'method' => 'GET', 'status'=> 200]);
+
+
+  }
   protected function updateOrder($nids,$val) { //update order
     foreach ($nids as $key=>$nid) { //annoying thing you can't really bypass as the result of $nids has weird key values, we're only expecting this to run once
       $orderitemssubform = array();
       foreach ($val->ORDERITEMS_SUBFORM as $key=>$obj) {
-        $address = $obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->ADDRESS."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->ADDRESS2."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->ADDRESS3."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->STATE."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->STATENAME."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->ZIP."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->COUNTRYNAME;
-        $transsubform = Paragraph::create([
-          'type' => 'orderitemstrans_subform',
-          'field_cur_date' => array(
-            'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->CURDATE,
-          ),
-          'field_doc' => array(
-            'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->DOC,
-          ),
-          'field_kline' => array(
-            'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->KLINE,
-          ),
-          'field_doc_no' => array(
-            'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->DOCNO,
-          ),
-          'field_t_type' => array(
-            'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->TTYPE,
-          ),
-          'field_zpls_shipperdes' => array(
-            'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPPERDES,
-          ),
-          'field_zpls_airwaybill' => array(
-            'value'  =>  $obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_AIRWAYBILL,
-          ),
-          'field_zpls_ship_to' => array(
-            'value'  =>  $address
-          ),
-          
-        ]);
-        $transsubform->save();
-
-        
-        $serialsubform = Paragraph::create([
-          'type' => 'ordserialordi_subform',
-        ]);
-        $ivsubform = Paragraph::create([
-          'type' => 'orderitemsiv_subform',
-          'field_ivnum' => array(
-            'value'  =>  $obj->ORDSERIALORDI_SUBFORM[0]->IVNUM,
-          ),
-        ]);
-        $ivsubform->save();
-
-        $serialsubform->save();
-        // print_r($serialsubform);
-        // die();
-        $par = Paragraph::create([
-          'type' => 'order_items_subform',
-          'field_kline' => $obj->KLINE,
-          'field_part_name'=> $obj->PARTNAME,
-          'field_part_description' => $obj->PDES,
-          'field_t_quant' => $obj->TQUANT,
-          'field_t_balance' => $obj->TBALANCE,
-          'field_orderitemstrans_subform' => array(
+        $transarr = array();
+        foreach ($obj->ORDERITEMSTRANS_SUBFORM as $val) {
+          $address = $val->ZPLS_SHIPTO_SUBFORM->ADDRESS."\n".$val->ZPLS_SHIPTO_SUBFORM->ADDRESS2."\n".$val->ZPLS_SHIPTO_SUBFORM->ADDRESS3."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->STATE."\n".$obj->ORDERITEMSTRANS_SUBFORM[0]->ZPLS_SHIPTO_SUBFORM->STATENAME."\n".$val->ZPLS_SHIPTO_SUBFORM->ZIP."\n".$val->ZPLS_SHIPTO_SUBFORM->COUNTRYNAME;
+  
+          $transsubform = Paragraph::create([
+            'type' => 'orderitemstrans_subform',
+            'field_cur_date' => array(
+              'value'  =>  $val->CURDATE,
+            ),
+            'field_doc' => array(
+              'value'  =>  $val->DOC,
+            ),
+            'field_kline' => array(
+              'value'  =>  $val->KLINE,
+            ),
+            'field_doc_no' => array(
+              'value'  =>  $val->DOCNO,
+            ),
+            'field_t_type' => array(
+              'value'  =>  $val->TTYPE,
+            ),
+            'field_zpls_shipperdes' => array(
+              'value'  =>  $val->ZPLS_SHIPPERDES,
+            ),
+            'field_zpls_airwaybill' => array(
+              'value'  =>  $val->ZPLS_AIRWAYBILL,
+            ),
+            'field_zpls_ship_to' => array(
+              'value'  =>  $address
+            ),
+            
+          ]);
+          $transsubform->save();
+  
+           $transarr[] = array(
             'target_id' => $transsubform->id(),
             'target_revision_id' => $transsubform->getRevisionId(),
-          ),
-          'field_orderitemsiv_subform' => array(
+           );
+        }
+        $ivarr = array();
+        foreach ($obj->ORDERITEMSIV_SUBFORM as $val) {
+            $ivsubform = Paragraph::create([
+            'type' => 'orderitemsiv_subform',
+            'field_ivnum' => array(
+              'value'  =>  $val->IVNUM,
+            ),
+          ]);
+          $ivsubform->save();
+          $ivarr[] = array(
             'target_id' => $ivsubform->id(),
             'target_revision_id' => $ivsubform->getRevisionId(),
-          ),
-        /*  'field_ordserialordi_subform' => array(
+          );
+        }
+        $serialarr = array();
+        foreach ($obj->ORDSERIALORDI_SUBFORM as $val) {
+          $serialsubform = Paragraph::create([
+            'type' => 'ordserialordi_subform',
+            'field_serial_name' => array(
+              'value'  =>  $val->SERIALNAME,
+            ),
+            'field_zpls_actname' => array(
+              'value'  =>  $val->ZPLS_ACTNAME,
+            ),
+            'field_zpls_serialstatusdes' => array(
+              'value'  =>  $val->ZPLS_SERIALSTATUSDES,
+            ),
+          ]);
+          $serialsubform->save();
+          $serialarr[] = array(
             'target_id' => $serialsubform->id(),
             'target_revision_id' => $serialsubform->getRevisionId(),
-          )*/
+          );
+        }
+        
+        $orderpar = Paragraph::create([
+          'type' => 'order_items_subform',
+          'field_kline' => $obj->KLINE,
+            'field_part_name'=> $obj->PARTNAME,
+            'field_part_description' => $obj->PDES,
+            'field_t_quant' => $obj->TQUANT,
+            'field_t_balance' => $obj->TBALANCE,
+          'field_orderitemstrans_subform' => $transarr,
+          'field_orderitemsiv_subform' => $ivarr,
+          'field_ordserialordi_subform' => $serialarr,
         ]);
-        $par->save();
-        $orderitemssubform[] = $par;
+        $orderpar->save();
+        $orderitemssubform[] = $orderpar;
       }
    
       $pararr = array();
      foreach ($orderitemssubform as $key=>$obj) {
-    
       $pararr[] = array(
         'target_id' => $obj->id(),
         'target_revision_id' => $obj->getRevisionId(),

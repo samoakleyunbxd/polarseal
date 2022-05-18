@@ -303,6 +303,18 @@ div
 }
 
 
+
+.round_dot.done
+{
+background: #47ff00;
+}
+
+
+
+
+
+
+
 .round_dot_outer
 {
     background: #056370;
@@ -326,10 +338,10 @@ div
 
 
 
-.round_dot::after
+.round_dot.done::after
 {
     content: "";
-    width: 190px;
+    width: 167px;
     background: #004c7a;
     position: absolute;
     left: 14px;
@@ -398,3 +410,60 @@ td
 
 
 }
+
+
+
+
+
+@media(max-width:999px)
+{
+    
+.individual_order .order-details {
+    margin-bottom: 58px;
+}
+
+
+
+.shippment .shippment_tracking
+{
+    padding:2px;
+    width: 100%;
+}
+
+.shippment .shippment_tracking .round_dot.last::after
+{
+    display:none;
+}
+
+
+
+.shippment_info,
+.order-table, .heading_info, .table_head_wrapper, .hide_mobile
+{
+    display:none!important;
+
+}
+
+
+
+.shippment_info.hide_desktop
+{
+    display:block!important;
+}
+
+
+
+}
+
+
+@media(min-width:999px)
+{
+     .hide_desktop
+{
+    display:none!important;
+
+}
+
+}
+
+

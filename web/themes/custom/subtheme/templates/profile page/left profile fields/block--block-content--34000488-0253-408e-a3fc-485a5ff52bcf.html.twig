@@ -36,7 +36,7 @@
   {{ title_prefix }}
 
 
-<p class="column_header">MY DETAILS</p>
+<p class="column_header">COMPANY DETAILS</p>
 
 
 {% set user = bamboo_load_currentuser() %}
@@ -51,7 +51,7 @@
 			<span class="label">Name</span>
 		</div>
 		<div style="width:50%">
-			<span class="data">{{ user.name.value }}</span>
+			<span class="data">{{ user.field_custname.value }}</span>
 		</div>
 	</div>
 </div>
@@ -59,10 +59,10 @@
 <div class="item">
 	<div style="width:100%;display: flex;">
 		<div style="width:50%">
-			<span class="label">Surname</span>
+			<span class="label">Phone number</span>
 		</div>
 		<div style="width:50%">
-			<span class="data">{{ user.field_surname.value }}</span>
+			<span class="data">{{ user.field_company_phone_number.value }}</span>
 		</div>
 	</div>
 </div>
@@ -70,22 +70,10 @@
 <div class="item">
 	<div style="width:100%;display: flex;">
 		<div style="width:50%">
-			<span class="label">Role</span>
+			<span class="label">Fax number</span>
 		</div>
 		<div style="width:50%">
-			<span class="data">{{ user.field_role.value }}</span>
-		</div>
-	</div>
-</div>
-
-
-<div class="item">
-	<div style="width:100%;display: flex;">
-		<div style="width:50%">
-			<span class="label">Email</span>
-		</div>
-		<div style="width:50%">
-			<span class="data">{{ user.field_name.value }}</span>
+			<span class="data">{{ user.field_company_fax_number.value }}</span>
 		</div>
 	</div>
 </div>
@@ -94,13 +82,16 @@
 <div class="item">
 	<div style="width:100%;display: flex;">
 		<div style="width:50%">
-			<span class="label">Telephone</span>
+			<span class="label">Country</span>
 		</div>
 		<div style="width:50%">
-			<span class="data">{{ user.field_telephone.value }}</span>
+			<span class="data">{{ user.field_company_country.value }}</span>
 		</div>
 	</div>
 </div>
+
+
+
 
   
   {% block content %}

@@ -1,8 +1,8 @@
 
 polar_seal.views_ajax:
-  path: '/admin/views/{nojs}/{view_id}/{display_id}/{args}'
+  path: '/polar_seal/views/{nojs}/{view_id}/{display_id}/{args}'
   defaults:
-    _controller: '\Drupal\polar_seal\Controller\PolarSealViewAjaxController::ajaxView'
+    _controller: '\Drupal\polar_seal\Controller\PolarSealViewAjaxController::ajaxViewChild'
   requirements:
     _permission: 'access content'
 
@@ -13,10 +13,24 @@ polar_seal.http_controller_fetchorders:
     _title: 'fetch'
   requirements:
     _permission: 'access content'
+polar_seal.importusers:
+  path: '/polar_seal/importusers'
+  defaults:
+    _controller: '\Drupal\polar_seal\Controller\HttpController::importUsers'
+    _title: 'Import Users'
+  requirements:
+    _permission: 'access content'
 polar_seal.read_notification:
   path: '/polar_seal/read-notification/{not_id}'
   defaults:
     _controller: '\Drupal\polar_seal\Controller\PolarSealViewAjaxController::readNotification'
-    _title: 'fetch'
+    _title: 'Read Notification'
+  requirements:
+    _permission: 'access content'
+polar_seal.getchart:
+  path: '/polar_seal/gen-chart/{from}/{to}'
+  defaults:
+    _controller: '\Drupal\polar_seal\Controller\HttpController::genSalesChart'
+    _title: 'Get Sales Chart'
   requirements:
     _permission: 'access content'

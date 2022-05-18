@@ -34,6 +34,7 @@
 
 
 
+
 <div id="notifications"></div>
 
 <script type="text/javascript">
@@ -41,6 +42,13 @@
 
 //add style to notification column on pforile page
 window.addEventListener('load', function () {
+
+
+var foot = jQuery(".right_column");
+foot.scrollTop(foot.scrollTop() + 150); // scroll 75px down from current
+
+var ids_array =[];
+
   jQuery('.block-views-blocknotifications-block-1').addClass("profile-column right_column");
 
 
@@ -55,15 +63,11 @@ get_notifications_ids();
 //add event to expand notification body on arrow click
 setTimeout(function(){
 
-jQuery('.views-field-nothing').click(function(){
-jQuery(this).find('.not-right').toggleClass('show_notification');
-jQuery(this).find('.notification_arrow').toggleClass('rotate_down');
-});
 
 
 
 //add notifications arrows right and down to control
-jQuery('.views-field-nothing').append('<span class="notification_arrow"></span>')
+jQuery('.views-field-nothing').append('<span onclick="show_notification_content(this)" class="notification_arrow"></span>')
 jQuery('.right_column').append('<span style="transform: translateX(-50%) rotate(180deg);left:45%" class="scroll_notifications" onclick="scrollWin(`down`)"></span>')
 jQuery('.right_column').append('<span style="left:60%" class="scroll_notifications" onclick="scrollWin(`up`)"></span>')
 
@@ -86,7 +90,23 @@ jQuery('#scrollBtn').on('click', function() {
 },1000)
 
 
+
+
+
+
+
+
+
+
+
+
 });
+
+
+
+
+
+
 
 
 
@@ -102,10 +122,7 @@ else
 document.getElementsByClassName("view-content")[0].scrollTop -= 150;
 }
 
-var foot = jQuery(".right_column");
-foot.scrollTop(foot.scrollTop() + 150); // scroll 75px down from current
 
-var ids_array =[];
 
 
 //grab all notifications node ID to tick as seen if needed
@@ -135,7 +152,13 @@ var items = jQuery('.right_column').find('.views-row')
 
 
 
+jQuery('.bell_seen').remove();
+
+
 jQuery.each(items, function( index, value ) {
+
+
+
 
 
 jQuery(this).append('<span class="bell_seen" onclick="tick_as_seen('+index+',this)" style="position: absolute;left: 7px;top: 14px;"><img width="16px" src="/themes/custom/subtheme/images/icons/bell_icon.png"></span>');
@@ -187,41 +210,37 @@ jQuery(elem).closest('.views-row').addClass('hide_row');
 
 .user-logged-in .profile-column.projects-list
 {
-	display:none!important;
+  display:none!important;
 }
 
 
 .bell_seen:hover
 {
-	cursor:pointer;
-	  -webkit-filter: drop-shadow(1px 1px 3px green);
+  cursor:pointer;
+    -webkit-filter: drop-shadow(1px 1px 3px green);
     filter: drop-shadow(1px 1px 3px green);
 }
 
 
 .rotate_down
 {
-	transform:rotate(90deg);
+  transform:rotate(90deg);
 }
 
 .notification_arrow
 {
-	transition:all .5s;
+  transition:all .5s;
 }
 
 
 
 
-.field-content:hover
-{
-cursor:pointer;
-}
 
 
 
 .views-row
 {
-	    transition: all 1s;
+      transition: all 1s;
 }
 
 
@@ -229,7 +248,7 @@ cursor:pointer;
 .slide_out
 {
 
-    transform: translateX(-300px);
+    transform: translateX(-500px);
 
 
 }
@@ -237,7 +256,7 @@ cursor:pointer;
 
 .hide_row
 {
-height: 1px!important;
+height: 0px!important;
     overflow: hidden;
     margin: 0px!important;
     padding: 0px!important;
@@ -247,8 +266,63 @@ height: 1px!important;
 
 .views-infinite-scroll-content-wrapper 
 {
-	transition: all 1s;
+  transition: all 1s;
 }
+
+
+
+
+
+
+.contextual-region.block h2 {
+    text-align: right;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+
+
+
+@media(max-width:999px)
+{
+
+  .right_column .view-content.row {
+
+    max-width: 100%;
+
+}
+}
+
+
+
+
+.show_notification p
+{
+	color:grey!important;
+}
+
+
+
+.view-notifications.view-id-notifications {
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    width: 100%;
+}
+  
+
+
+
+.view-notifications.view-id-notifications label
+{
+color:white;
+
+  
+
+}
+
+
+
 
 
 </style>
@@ -256,3 +330,114 @@ height: 1px!important;
 
 
 
+
+
+<script type="text/javascript">
+
+setTimeout(function(){
+
+
+
+
+
+(function($) { 
+  Drupal.behaviors.betterExposedFilters = {
+    attach: function (context, settings) {
+
+jQuery('.notification_arrow').remove();
+
+
+
+
+//add notifications arrows right and down to control
+jQuery('.views-field-nothing').append('<span onclick="show_notification_content(this)" class="notification_arrow"></span>')
+jQuery('.right_column').append('<span style="transform: translateX(-50%) rotate(180deg);left:45%" class="scroll_notifications" onclick="scrollWin(`down`)"></span>')
+jQuery('.right_column').append('<span style="left:60%" class="scroll_notifications" onclick="scrollWin(`up`)"></span>')
+
+
+
+
+
+//bind function to scroll down/up notification window
+var scrollWrapper = jQuery('.right_column .view-content.row');
+var scrollBtn = jQuery('.scroll_notifications');
+
+scrollWrapper.scrollTop(0)
+jQuery('#scrollBtn').on('click', function() {
+  scrollWrapper.scrollTop(scrollWrapper.scrollTop() + 50)
+});
+
+
+
+
+
+
+
+
+
+
+
+get_notifications_ids();
+
+
+setTimeout(function(){
+jQuery('.views-field-nothing').click(function(){
+
+});
+console.log("bimnd");
+},5000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+    }
+  };
+})(jQuery);
+
+
+},1500);
+
+
+
+
+
+
+function show_notification_content(elem)
+{
+
+
+jQuery(elem).toggleClass('rotate_down');
+jQuery(elem).parent().find('.not-right').toggleClass('show_notification');
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+</script>

@@ -1,5 +1,26 @@
 
 
+#content
+{
+    
+position:relative;
+}
+
+
+.header_sticky
+{
+	position: fixed;
+    top: 0px;
+    width: 100%;
+    background: white;
+    z-index: 100;
+    box-shadow: 1px 0px 19px 1px #eeeeee;
+}
+
+
+
+
+
 
 
 #page-wrapper, #page, #header, #navbar-main
@@ -30,7 +51,7 @@ background: #f7faff;
 
 .page_overlay
 {
-    position: absolute;
+    position: fixed;
     top: 0%;
     left: 0%;
     width: 100%;
@@ -79,7 +100,7 @@ background: #f7faff;
     {
     position: absolute;
     right: 14px;
-    content: "";
+   
     display: block;
     background-image: url(/themes/custom/subtheme/images/icons/right_arrow.png);
     width: 23px;
@@ -227,6 +248,9 @@ h2
 {
     font-size: 25px!important;
 }
+
+
+
 
 }
 

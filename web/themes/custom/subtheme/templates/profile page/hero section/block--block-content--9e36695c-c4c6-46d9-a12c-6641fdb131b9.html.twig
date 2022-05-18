@@ -32,14 +32,32 @@
 
 {% set user2 = bamboo_load_currentuser() %}
 
+
+
+
+
+
+
+
+
+
+
 <div class="profile_hero_section" {{ attributes }}>
-	<div class="top_bck_image">
+	<div class="top_bck_image" style="background-image:url('{{ file_url(user2.field_banner.entity.uri.value)  }} ')">
 
 		<a class="edit_profile" href="/user/{{ user2.uid.value }}/edit"><img class="" src="/themes/custom/subtheme/images/icons/pencil_icon.png"></a>
 
 	</div>
 	<div class="profile_img">
+
+
+{% if file_url(user2.user_picture.entity.uri.value) %}
 		<img width="85" src="{{ file_url(user2.user_picture.entity.uri.value) }}">
+{% else %}
+	<img width="85" src="/themes/custom/subtheme/images/icons/def_profile.jpg">
+
+{% endif %}
+
 	</div>
 	<div class="profile_info">
 		<h2>MY ACCOUNT</h2>

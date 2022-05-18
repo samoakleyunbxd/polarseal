@@ -738,7 +738,7 @@ $settings['entity_update_batch_size'] = 50;
  * retained after a successful entity update process.
  */
 $settings['entity_update_backup'] = TRUE;
-
+$settings['block_interest_cohort'] = FALSE;
 /**
  * Node migration type.
  *
